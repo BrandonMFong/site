@@ -1,18 +1,6 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A layout example with a side menu that hides on mobile, just like the Pure website.">    
-    <title>
-        Brandon Fong Music
-    </title>    
-    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-" crossorigin="anonymous">
-    
-        <!--[if gt IE 8]><!-->
-            <link rel="stylesheet" href="../css/layouts/stylesheet.css">
-        <!--<![endif]-->
-</head>
+    <?php include '../head.php'; >
 <body>
 
 <div id="layout">
@@ -88,8 +76,5 @@
 
 <!-- Copy right footer -->
 <div class="Footer">
-    <p style="text-align:center;white-space:pre-wrap;" class="">
-    © 2019 Brandon Fong Music. All rights reserved.
-	View <a href="https://github.com/BrandonFongMusic/BrandonFongMusic">Open Source</a>
-    </p>
+    <?php include 'footer.php'; ?>
 </div>
