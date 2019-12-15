@@ -9,7 +9,7 @@
     
         <!--[if gt IE 8]><!-->
         <?php
-            echo "<link rel=\"stylesheet\" href=\"\""; 
+            echo "<link rel=\"stylesheet\" href=\"";
             if(getcwd() == 'About'){ echo "../css/layouts/stylesheet.css\">";}
             elseif(getcwd() == 'Music'){ echo "../css/layouts/stylesheet.css\">";}
             else { echo "css/layouts/stylesheet.css\">";}
