@@ -1,3 +1,0 @@
-AddHandler application/x-httpd-lsphp .htm .html
-
-ErrorDocument 500 Errors/Error.html
