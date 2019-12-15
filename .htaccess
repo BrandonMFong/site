@@ -1,4 +1,3 @@
-AddType application/x-httpd-php .php .php7 .phtml .html .htm 
-AddHandler application/x-httpd-ea-php73 .php .php7 .phtml .html .htm
+AddHandler application/x-httpd-lsphp .htm .html
 
 ErrorDocument 500 Errors/Error.html
