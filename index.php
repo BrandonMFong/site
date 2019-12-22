@@ -1,6 +1,6 @@
 ﻿<!doctype html>
 <html lang="en">
-    <?php include 'head.php'; ?>
+    <?php include 'php/head.php'; ?>
 <body>
 
 <div id="layout">
@@ -50,8 +50,9 @@
         <div class="header">
             <h1>Brandon Fong Music</h1>
             <h2>Musician</h2>
+            <?php echo basename(__DIR__); ?>
         </div>
-
+        <!-- TODO put this in a DB -->
         <div class="content">
 			<!-- Youtube Begin -->
             <h1>Latest Video</h1>
@@ -79,13 +80,10 @@
     </div>
 </div>
 
-<script src="js/ui.js"></script>
+<?php include 'php/js.php'; ?>
 
 </body>
 </html>
 
 
-<!-- Copy right footer -->
-<div class="Footer">
-    <!-- <?php include 'footer.php'; ?> -->
-</div>
+<?php include 'php/footer.php'; ?>

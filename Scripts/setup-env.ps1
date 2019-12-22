@@ -3,41 +3,53 @@
 #   - Path to scripts is B:\SITES\BrandonFongMusic\Scripts
 #   - Name of Git Repo is \BrandonFongMusic
 #   - There is an alias Chrome -> C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
-#   - xampp exists on machine
+#   - xampp exists on machine 
 
 # Uncomment if the alias doesn't exist
 # set-alias Chrome 'C:\Program Files (x86)\Google\Chrome\Application\chrome.exe' 
+# Set-Alias Xampp 'C:\xampp\xampp-control.exe'
         
+# Variables
 $replace = 'B:\\SITES\\';
 $xampp_dir = 'C:\xampp\htdocs\';
-$site_dir = 'B:\SITES\';
+$xampp = 'C:\xampp\';
+$repo_dir = 'B:\SITES\';
 $repo_name = 'BrandonFongMusic';
-$git_repo_dir = $site_dir.ToString() + $repo_name.ToString() + '\';
-$logfile = $site_dir.ToString() + "\debug.log";
-if (!(Test-Path $logfile)){New-Item $logfile;}
+$git_repo_dir = $repo_dir.ToString() + $repo_name.ToString() + '\';
+$logfile = $git_repo_dir + "logs\debug.log";
+$local_flag = $git_repo_dir + "logs\.is_local";
+if (!(Test-Path $logfile)){New-Item $logfile;} # Creates a log file, might not use
+if (!(Test-Path $local_flag)){New-Item $local_flag;} # Creates a local flag to tell php we are running locally.  IE never run this on the server. This script is only for local testing
 
 Push-Location 'B:\SITES\BrandonFongMusic\Scripts'; 
-
+    if(!(Test-Path $xampp))
+    {
+        Write-Warning "Xampp is not downloaded on this machine or it is located somewhere different.";
+        Write-Host "Making directory but need the program to run local website.";
+        mkdir $xampp;
+        mkdir $xampp_dir;
+        Write-Host "Successfully made " $xampp_dir " & " $xampp;
+    }
     # Removes files
     if(Test-Path $xampp_dir*)
     {
         Write-Host "There are files here, going to clear out directory...";
         try 
         {
-            Remove-Item $xampp_dir* -Force -Confirm;
+            Remove-Item $xampp_dir* -Force -Confirm; # Just say "Yes to All"
         }
         catch 
         {
-            Write-Host "Something bad happened";
-            Write-Host $_;
-            Write-Host "Exiting program...";   
+            Write-Warning "Something bad happened";
+            Write-Error $_;
+            Write-Warning "Exiting program...";   
             exit;
         }
         Write-Host "Deletion successful";
     }
 
     # Copies files
-    Set-Location $site_dir;
+    Set-Location $repo_dir;
     if (Test-Path $git_repo_dir){ Get-ChildItem | Where-Object{$_.Name -eq $repo_name;}| ForEach-Object{$path = $_.FullName};}
 
     #Copy-Item .\BrandonFongMusic\* $dir; 
@@ -91,17 +103,40 @@ Push-Location 'B:\SITES\BrandonFongMusic\Scripts';
         {
             if($files[$k].Contains($directory[$d]))# error here because .vscode contains .vs
             {
+                for($m = 0; $m -lt $directory.Count; $m++)
+                {
+                    # trying to get the max length of the directory 
+                    # safe to say that is the true directory the want
+                    # kind of like a sorting algorithm here
+                    # TODO figure this out
+                    if(($files[$k].Contains($directory[$m])) -and ($directory[$m] -lt $directory[$d]))
+                    {
+
+                        $d = $m;
+                    }
+                }
                 Copy-Item $files[$k] $destination[$d];
-                Write-Host "Copied" $files[$k] " to " $destination[$d];
+                Write-Host "Copied" $files[$k] " to " $destination[$d]; # stuck in a loop here
                 
             }
             Write-Progress -Activity 'Copying Files' -Status 'Progress:' -PercentComplete $d 
         }
     }
-    Write-Host "Successfully copied files";
+    Write-Host "`nSuccessfully copied files`n";
     
     Write-Host "Copied Items from " $path " to " $xampp_dir;
-    Write-Host "Opening browser @ localhost in 3 seconds...";
+    Write-Host "`nOpening browser @ localhost in 3 seconds...";
     Start-Sleep -s 3;
-    chrome "localhost";
+    try 
+    {
+        chrome "localhost";
+    }
+    catch
+    {
+        Write-Host "Something went wrong.";
+        Write-Host "Alias probably doesn't exist";
+        Write-Error $_;
+        Write-Host "Exiting program.";
+        exit;
+    }
 Pop-Location

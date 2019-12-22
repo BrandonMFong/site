@@ -1,18 +1,6 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="A layout example with a side menu that hides on mobile, just like the Pure website.">    
-        <title>
-            Brandon Fong Music
-        </title>    
-        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-" crossorigin="anonymous">
-        
-            <!--[if gt IE 8]><!-->
-                <link rel="stylesheet" href="../css/layouts/stylesheet.css">
-            <!--<![endif]-->
-    </head>
+    <?php include 'php/head.php'; ?>
 <body>
 
 <div id="layout">
@@ -58,19 +46,15 @@
             <h1>Brandon Fong Music</h1>
             <h2>Musician</h2>
         </div>
-
+        <!-- TODO put this in a DB -->
         <div class="content">
             <h1>About</h1>
 			<p>
-				Brandon Fong was raised in the Bay Area.  Growing up in Hercules, CA was where he found is love for music.  First finding his bearings in Tahitian drumming, he then after picked up the Ukulele, Guitar and Piano.  Guitar is his instrument of choice for its portability and calming nature.
+				Brandon Fong was raised in the Bay Area.  Growing up in Hercules, CA was where he found is love for music.  First finding his bearings in Tahitian drumming, he then after picked up the Ukulele, Guitar and Piano.  Guitar is his instrument of choice for its portability and calming nature.<br>
 			</p>
-			<p></p>
-			<p></p>
 			<p>
-				Brandon has music on <a href="https://www.youtube.com/user/TheFongBoy">Youtube</a>, <a href="https://soundcloud.com/brandonfong">SoundCloud</a>, and <a href="https://open.spotify.com/artist/1AJ0HggT32RRsEbTvC6tF2?si=pqWrTK96TAmwHfXz78KcMQ">Spotify.</a>  He has released two EPs, "Began" and "Let's Dance".<!-- TODO put those on your site -->  He is currently focusing on his "Stuck in the Clouds" Demo project.
+				Brandon has music on <a href="https://www.youtube.com/user/TheFongBoy">Youtube</a>, <a href="https://soundcloud.com/brandonfong">SoundCloud</a>, and <a href="https://open.spotify.com/artist/1AJ0HggT32RRsEbTvC6tF2?si=pqWrTK96TAmwHfXz78KcMQ">Spotify.</a>  He has released two EPs, "Began" and "Let's Dance".He is currently focusing on his "Stuck in the Clouds" Demo project.<br>
 			</p>
-			<p></p>
-			<p></p>
 			<p>
 				Today, he is finishing his Bachelors in Computer Engineering at San Diego State University.  He works for Kiran Analytics in La Jolla and volunteers his Fridays to play music to seniors at UCSD Health.
 			</p>
@@ -80,13 +64,10 @@
     </div>
 </div>
 
-<script src="../js/ui.js"></script>
+<?php include '../php/js.php'; ?>
 
 </body>
 </html>
 
 
-<!-- Copy right footer -->
-<div class="Footer">
-    <?php include 'footer.php'; ?>
-</div>
+<?php include '../php/footer.php'; ?>
