@@ -4,24 +4,37 @@
 #   - Name of Git Repo is \BrandonFongMusic
 #   - There is an alias Chrome -> C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
 #   - xampp exists on machine 
+#   - running in powershell
+#   - scripts is in the base folder of your repo (should be)
 
-# Uncomment if the alias doesn't exist
-# set-alias Chrome 'C:\Program Files (x86)\Google\Chrome\Application\chrome.exe' 
-# Set-Alias Xampp 'C:\xampp\xampp-control.exe'
+############################## I M P O R T A N T ############################################
+# PLEASE EDIT THESE VAIRABLES IF THEY DON'T MATCH YOUR MACHINE
+try 
+{
+    set-alias Chrome 'C:\Program Files (x86)\Google\Chrome\Application\chrome.exe' 
+}
+catch 
+{
+    Write-Warning "Alias already exist or you haven't download them";
+    Write-Warning $_;
+}
         
-# Variables
-$replace = 'B:\\SITES\\';
+# VARIABLES
+$replace = 'B:\\SITES\\'; 
 $xampp_dir = 'C:\xampp\htdocs\';
 $xampp = 'C:\xampp\';
 $base_dir = 'B:\SITES\';
 $repo_name = 'BrandonFongMusic';
 $git_repo_dir = $base_dir.ToString() + $repo_name.ToString() + '\';
+$scripts_dir = $git_repo_dir + 'Scripts';
 $logfile = $git_repo_dir + "logs\debug.log";
 $local_flag = $git_repo_dir + "logs\.is_local";
 if (!(Test-Path $logfile)){New-Item $logfile;} # Creates a log file, might not use
 if (!(Test-Path $local_flag)){New-Item $local_flag;} # Creates a local flag to tell php we are running locally.  IE never run this on the server. This script is only for local testing
 
-Push-Location 'B:\SITES\BrandonFongMusic\Scripts'; 
+############################## I M P O R T A N T ############################################
+
+Push-Location $scripts_dir; 
     if(!(Test-Path $xampp))
     {
         Write-Warning "Xampp is not downloaded on this machine or it is located somewhere different.";
