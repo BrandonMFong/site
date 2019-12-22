@@ -9,7 +9,7 @@
     
         <!--[if gt IE 8]><!-->
         <?php
-            echo "<link rel=\"stylesheet\" href=\"/home/u820870703/public_html/css/layouts/stylesheet.css";
+            echo "<link rel=\"stylesheet\" href=\"/home/u820870703/public_html/css/layouts/stylesheet.css\"";
         ?>
         <!--<![endif]-->
 </head>
