@@ -50,7 +50,6 @@
         <div class="header">
             <h1>Brandon Fong Music</h1>
             <h2>Musician</h2>
-            <?php echo basename(__DIR__); ?>
         </div>
         <!-- TODO put this in a DB -->
         <div class="content">

@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-    <?php include 'php/head.php'; ?>
+    <?php include '../php/head.php'; ?>
 <body>
 
 <div id="layout">

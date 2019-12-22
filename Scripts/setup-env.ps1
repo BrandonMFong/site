@@ -13,9 +13,9 @@
 $replace = 'B:\\SITES\\';
 $xampp_dir = 'C:\xampp\htdocs\';
 $xampp = 'C:\xampp\';
-$repo_dir = 'B:\SITES\';
+$base_dir = 'B:\SITES\';
 $repo_name = 'BrandonFongMusic';
-$git_repo_dir = $repo_dir.ToString() + $repo_name.ToString() + '\';
+$git_repo_dir = $base_dir.ToString() + $repo_name.ToString() + '\';
 $logfile = $git_repo_dir + "logs\debug.log";
 $local_flag = $git_repo_dir + "logs\.is_local";
 if (!(Test-Path $logfile)){New-Item $logfile;} # Creates a log file, might not use
@@ -49,94 +49,117 @@ Push-Location 'B:\SITES\BrandonFongMusic\Scripts';
     }
 
     # Copies files
-    Set-Location $repo_dir;
-    if (Test-Path $git_repo_dir){ Get-ChildItem | Where-Object{$_.Name -eq $repo_name;}| ForEach-Object{$path = $_.FullName};}
+    Push-Location $base_dir;
+        # This is just miscelleneous.  Don't need this
+        if (Test-Path $git_repo_dir){ Get-ChildItem | Where-Object{$_.Name -eq $repo_name;}| ForEach-Object{$path = $_.FullName};}
 
-    #Copy-Item .\BrandonFongMusic\* $dir; 
+        # This command showed me that I needed this script
+        #Copy-Item .\BrandonFongMusic\* $dir; 
 
-    # Gets all the directory names in the repo
-    $directory = [System.Collections.ArrayList]::new(); 
-    # recurse through the repo
-    # filters only directory type
-    # adds directory path to an arraylist
-    Get-ChildItem $git_repo_dir -r | Where-Object{$_.Attributes -eq "Directory"}|ForEach-Object{$directory.Add($_.fullName)};
-    $directory.Add($git_repo_dir);
-    Write-Host "Obtained all directories in git repo " $git_repo_dir;
+        # Gets all the directory names in the repo
+        $directory = [System.Collections.ArrayList]::new(); 
+        $base_directory = [System.Collections.ArrayList]::new(); 
+        
+        # recurse through the repo
+        # filters only directory type
+        # adds directory path to an arraylist
+        Get-ChildItem $git_repo_dir -r | Where-Object{$_.Attributes -eq "Directory"}|ForEach-Object{$directory.Add($_.fullName)};
+        
+        # This get's the trailing directoory name of the file path
+        # Using this to compare for the copy function
+        Get-ChildItem $git_repo_dir -r | Where-Object{$_.Attributes -eq "Directory"} | ForEach-Object{$base_directory.Add($_.BaseName)}
+        $directory.Add($git_repo_dir);
+        $base_directory.Add($repo_name);
+        
+        Write-Host "Obtained all directories in git repo " $git_repo_dir;
 
-    Write-Host "Stripping file paths...";
-    $new_directory = [System.Collections.ArrayList]::new(); 
-    for($j = 0; $j -lt $directory.Count; $j++)
-    {
-        $new_directory.Add($directory[$j] -replace $replace); # takes all items in the array list, replaces b:\site with nothing and adds it into new array list
-        Write-Host $directory[$j] " --> " $new_directory[$j]; 
-    }
-
-    Write-Host "Appending " $xampp_dir " and making directory";
-    $destination = [System.Collections.ArrayList]::new(); 
-    for($j = 0; $j -lt $new_directory.Count; $j++)
-    {
-        $destination.Add($xampp_dir.ToString() + $new_directory[$j].ToString());
-        Write-Host $new_directory[$j] " --> " $destination[$j];
-        try # in the case if the directory already exists
+        Write-Host "Stripping file paths...";
+        
+        $new_directory = [System.Collections.ArrayList]::new(); 
+        for($j = 0; $j -lt $directory.Count; $j++)
         {
-            if(!(Test-Path $destination[$j])){mkdir $destination[$j]; Write-Host "Made directory.";}
+            $new_directory.Add($directory[$j] -replace $replace); # takes all items in the array list, replaces b:\site with nothing and adds it into new array list
+            Write-Host $directory[$j] " --> " $new_directory[$j]; 
+        }
+
+        Write-Host "Appending " $xampp_dir " and making directory";
+        
+        $destination = [System.Collections.ArrayList]::new(); 
+        for($j = 0; $j -lt $new_directory.Count; $j++)
+        {
+            $destination.Add($xampp_dir.ToString() + $new_directory[$j].ToString());
+            Write-Host $new_directory[$j] " --> " $destination[$j];
+            try # in the case if the directory already exists
+            {
+                if(!(Test-Path $destination[$j])){mkdir $destination[$j]; Write-Host "Made directory.";}
+                else{Write-Host "Directory already exists.";}
+            }
+            catch
+            {
+                Write-Host "Something went wrong";
+                Write-Error $_;
+                Write-Host "Exiting program...";
+                exit;
+            }
+        }
+        Write-Host "Appending and making directory successful";
+
+        Write-Host "`nLooking for Files";
+
+        $files = [System.Collections.ArrayList]::new();
+        $files_base_dir = [System.Collections.ArrayList]::new();
+
+        # Gets files full path
+        Get-ChildItem $git_repo_dir -r |Where-Object{$_.Attributes -eq "Archive"}|ForEach-Object{$files.Add($_.FullName)};
+        
+        # Gets the trailing component of the file path to the directories
+        # Going to use this to compare
+        Get-ChildItem $git_repo_dir -r | Where-Object{$_.Attributes -eq "Archive"} | ForEach-Object{ $_.Directory}|ForEach-Object{$files_base_dir.Add($_.BaseName)}
+        
+        Write-Host "Found " $files.Count " files in " $git_repo_dir;
+
+        Write-Host "Start copies...";
+        for($k = 0; $k -lt $files.Count; $k++)
+        {
+            for($d = 0; $d -lt $directory.Count; $d++)
+            {
+                if($files_base_dir[$k] -eq $base_directory[$d])# error here because .vscode contains .vs
+                {
+                    # for($m = 0; $m -lt $directory.Count; $m++)
+                    # {
+                    #     # trying to get the max length of the directory 
+                    #     # safe to say that is the true directory the want
+                    #     # kind of like a sorting algorithm here
+                    #     if(($files[$k].Contains($directory[$m])) -and ($directory[$m] -gt $directory[$d]))
+                    #     {
+                    #         $d = $m;
+                    #     }
+                    # }
+                    Copy-Item $files[$k] $destination[$d];
+                    Write-Host "Copied" $files[$k] " to " $destination[$d]; # stuck in a loop here
+                    
+                }
+                Write-Progress -Activity 'Copying Files' -Status 'Progress:' -PercentComplete $d; 
+            }
+        }
+
+        Write-Progress -Activity 'Success.  Finishing final steps.';
+        Write-Host "`nSuccessfully copied files`n";
+        
+        Write-Host "Copied Items from " $path " to " $xampp_dir;
+        Write-Host "`nOpening browser @ localhost in 3 seconds...";
+        Start-Sleep -s 3;
+        try 
+        {
+            chrome "localhost";
         }
         catch
         {
-            Write-Host "Something went wrong";
+            Write-Host "Something went wrong.";
+            Write-Host "Alias probably doesn't exist";
             Write-Error $_;
-            Write-Host "Exiting program...";
+            Write-Host "Exiting program.";
             exit;
         }
-    }
-    Write-Host "Appending and making directory successful";
-
-    Write-Host "`nLooking for Files";
-    $files = [System.Collections.ArrayList]::new();
-    Get-ChildItem $git_repo_dir -r |Where-Object{$_.Attributes -eq "Archive"}|ForEach-Object{$files.Add($_.FullName)};
-    Write-Host "Found " $files.Count " files in " $git_repo_dir;
-
-    Write-Host "Start copies...";
-    for($k = 0; $k -lt $files.Count; $k++)
-    {
-        for($d = 0; $d -lt $directory.Count; $d++)
-        {
-            if($files[$k].Contains($directory[$d]))# error here because .vscode contains .vs
-            {
-                for($m = 0; $m -lt $directory.Count; $m++)
-                {
-                    # trying to get the max length of the directory 
-                    # safe to say that is the true directory the want
-                    # kind of like a sorting algorithm here
-                    # TODO figure this out
-                    if(($files[$k].Contains($directory[$m])) -and ($directory[$m] -lt $directory[$d]))
-                    {
-
-                        $d = $m;
-                    }
-                }
-                Copy-Item $files[$k] $destination[$d];
-                Write-Host "Copied" $files[$k] " to " $destination[$d]; # stuck in a loop here
-                
-            }
-            Write-Progress -Activity 'Copying Files' -Status 'Progress:' -PercentComplete $d 
-        }
-    }
-    Write-Host "`nSuccessfully copied files`n";
-    
-    Write-Host "Copied Items from " $path " to " $xampp_dir;
-    Write-Host "`nOpening browser @ localhost in 3 seconds...";
-    Start-Sleep -s 3;
-    try 
-    {
-        chrome "localhost";
-    }
-    catch
-    {
-        Write-Host "Something went wrong.";
-        Write-Host "Alias probably doesn't exist";
-        Write-Error $_;
-        Write-Host "Exiting program.";
-        exit;
-    }
-Pop-Location
+    Pop-Location;
+Pop-Location;
