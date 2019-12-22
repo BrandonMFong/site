@@ -8,13 +8,13 @@
 # Uncomment if the alias doesn't exist
 # set-alias Chrome 'C:\Program Files (x86)\Google\Chrome\Application\chrome.exe' 
         
-$replace = 'B:\\SITES';
+$replace = 'B:\\SITES\\';
 $xampp_dir = 'C:\xampp\htdocs\';
 $site_dir = 'B:\SITES\';
 $repo_name = 'BrandonFongMusic';
 $git_repo_dir = $site_dir.ToString() + $repo_name.ToString() + '\';
 $logfile = $site_dir.ToString() + "\debug.log";
-New-Item $logfile;
+if (!(Test-Path $logfile)){New-Item $logfile;}
 
 Push-Location 'B:\SITES\BrandonFongMusic\Scripts'; 
 
@@ -58,7 +58,7 @@ Push-Location 'B:\SITES\BrandonFongMusic\Scripts';
         Write-Host $directory[$j] " --> " $new_directory[$j]; 
     }
 
-    Write-Host "Appending " $xampp_dir;
+    Write-Host "Appending " $xampp_dir " and making directory";
     $destination = [System.Collections.ArrayList]::new(); 
     for($j = 0; $j -lt $new_directory.Count; $j++)
     {
@@ -66,7 +66,7 @@ Push-Location 'B:\SITES\BrandonFongMusic\Scripts';
         Write-Host $new_directory[$j] " --> " $destination[$j];
         try # in the case if the directory already exists
         {
-            if(Test-Path $destination[$j]){mkdir $destination[$j];}
+            if(!(Test-Path $destination[$j])){mkdir $destination[$j]; Write-Host"Made directory.";}
         }
         catch
         {
@@ -76,14 +76,14 @@ Push-Location 'B:\SITES\BrandonFongMusic\Scripts';
             break;
         }
     }
-    Write-Host "Appending successful";
+    Write-Host "Appending and making directory successful";
 
     Write-Host "`nLooking for Files";
     $files = [System.Collections.ArrayList]::new();
     Get-ChildItem $git_repo_dir -r |Where-Object{$_.Attributes -eq "Archive"}|ForEach-Object{$files.Add($_.FullName)};
     Write-Host "Found " $files.Count " files in " $git_repo_dir;
 
-    Write-Host "Start copies..";
+    Write-Host "Start copies...";
     for($k = 0; $k -lt $files.Count; $k++)
     {
         for($d = 0; $d -lt $directory.Count; $d++)
