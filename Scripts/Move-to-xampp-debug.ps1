@@ -30,8 +30,8 @@ Push-Location 'B:\SITES\BrandonFongMusic\Scripts';
         {
             Write-Host "Something bad happened";
             Write-Host $_;
-            Write-Host "Exitting program...";   
-            break;
+            Write-Host "Exiting program...";   
+            exit;
         }
         Write-Host "Deletion successful";
     }
@@ -48,6 +48,7 @@ Push-Location 'B:\SITES\BrandonFongMusic\Scripts';
     # filters only directory type
     # adds directory path to an arraylist
     Get-ChildItem $git_repo_dir -r | Where-Object{$_.Attributes -eq "Directory"}|ForEach-Object{$directory.Add($_.fullName)};
+    $directory.Add($git_repo_dir);
     Write-Host "Obtained all directories in git repo " $git_repo_dir;
 
     Write-Host "Stripping file paths...";
@@ -66,14 +67,14 @@ Push-Location 'B:\SITES\BrandonFongMusic\Scripts';
         Write-Host $new_directory[$j] " --> " $destination[$j];
         try # in the case if the directory already exists
         {
-            if(!(Test-Path $destination[$j])){mkdir $destination[$j]; Write-Host"Made directory.";}
+            if(!(Test-Path $destination[$j])){mkdir $destination[$j]; Write-Host "Made directory.";}
         }
         catch
         {
             Write-Host "Something went wrong";
-            Write-Host $_;
+            Write-Error $_;
             Write-Host "Exiting program...";
-            break;
+            exit;
         }
     }
     Write-Host "Appending and making directory successful";
@@ -88,7 +89,7 @@ Push-Location 'B:\SITES\BrandonFongMusic\Scripts';
     {
         for($d = 0; $d -lt $directory.Count; $d++)
         {
-            if($files[$k].Contains($directory[$d]))
+            if($files[$k].Contains($directory[$d]))# error here because .vscode contains .vs
             {
                 Copy-Item $files[$k] $destination[$d];
                 Write-Host "Copied" $files[$k] " to " $destination[$d];
