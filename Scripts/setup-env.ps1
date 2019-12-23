@@ -18,38 +18,65 @@ catch
     Write-Warning "Alias already exist or you haven't download them";
     Write-Warning $_;
 }
-        
-# VARIABLES
-$replace = 'B:\\SITES\\'; 
-$xampp_dir = 'C:\xampp\htdocs\';
-$xampp = 'C:\xampp\';
-$base_dir = 'B:\SITES\';
-$repo_name = 'BrandonFongMusic';
-$git_repo_dir = $base_dir.ToString() + $repo_name.ToString() + '\';
-$scripts_dir = $git_repo_dir + 'Scripts';
-$logfile = $git_repo_dir + "logs\debug.log";
-$local_flag = $git_repo_dir + "logs\.is_local";
-if (!(Test-Path $logfile)){New-Item $logfile;} # Creates a log file, might not use
-if (!(Test-Path $local_flag)){New-Item $local_flag;} # Creates a local flag to tell php we are running locally.  IE never run this on the server. This script is only for local testing
 
+### VARIABLES ##
+try 
+{
+    # run in ps @ gitrepo: pwd |%{$_.Path}| %{$_ -replace '\\', '\\'} |%{$_ +'\\'}|scb 
+    $replace = 'B:\\SITES\\'; # file path before the public_html directory
+    
+    $xampp_dir = 'C:\xampp\htdocs\'; # where xampp is to debug php scripts
+    $xampp = 'C:\xampp\'; # xampp folder
+    
+    # run in ps @ gitrepo: pwd |%{$_.Path}|%{$_ + '\'}|scb
+    $base_dir = 'B:\SITES\'; # file path before the public_html directory
+    
+    $repo_name = 'BrandonFongMusic'; # the directory you are debugging 
+    $git_repo_dir = $base_dir.ToString() + $repo_name.ToString() + '\'; # entire path to public_html
+    $scripts_dir = $git_repo_dir + 'Scripts'; # Path to the scripts folder inside public_html
+    $log = $git_repo_dir + "logs\"; # making log dir
+    $logfile = $log + "debug.log"; # debug log, TODO add some content
+    $local_flag = $log + ".is_local"; # flag to tell site that we are doing some things locally
+    if (!(Test-Path $log)){mkdir $log;}
+    if (!(Test-Path $logfile)){New-Item $logfile;} # Creates a log file, might not use
+    if (!(Test-Path $local_flag)){New-Item $local_flag;} # Creates a local flag to tell php we are running locally.  IE never run this on the server. This script is only for local testing
+}
+catch
+{
+    Write-Warning $_;
+    Write-Warning "Please input correct variables that describes where the git repo is on your machine";
+    Write-Warning "Variables on in setup-env.ps1";
+    Write-Host "`n Exiting program...";
+    exit;
+}
 ############################## I M P O R T A N T ############################################
 
+Write-Warning "It's going to ask if you want to remove all files at C:\xampp\htdocs\";
+Write-Warning "Just say yes to all of if you are okay with it.";
+Write-Warning "I suggest you move your files out of C:\xampp\htdocs\";
+
 Push-Location $scripts_dir; 
+    $temp = $xampp_dir + $repo_name;
     if(!(Test-Path $xampp))
     {
         Write-Warning "Xampp is not downloaded on this machine or it is located somewhere different.";
         Write-Host "Making directory but need the program to run local website.";
+        Write-Host "Download link: https://www.apachefriends.org/download.html";
+        try{write-host "Opening download link..."; chrome "https://www.apachefriends.org/download.html";}
+        catch{Write-Host "Could not open link."; Write-Host $_;}
         mkdir $xampp;
         mkdir $xampp_dir;
         Write-Host "Successfully made " $xampp_dir " & " $xampp;
     }
     # Removes files
-    if(Test-Path $xampp_dir*)
+    if(Test-Path $temp)
     {
         Write-Host "There are files here, going to clear out directory...";
+        Write-Warning "Deleting folder:";
+        Write-Host $temp;
         try 
         {
-            Remove-Item $xampp_dir* -Force -Confirm; # Just say "Yes to All"
+            Remove-Item $temp -Force -Confirm; # Just say "Yes to All"
         }
         catch 
         {
