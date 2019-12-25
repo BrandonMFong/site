@@ -1,7 +1,5 @@
 # This copies the git repo to xampp to run the php scripts
 # Assumptions:
-#   - Path to scripts is B:\SITES\BrandonFongMusic\Scripts
-#   - Name of Git Repo is \BrandonFongMusic
 #   - There is an alias Chrome -> C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
 #   - xampp exists on machine 
 #   - running in powershell
@@ -12,6 +10,7 @@
 try 
 {
     set-alias Chrome 'C:\Program Files (x86)\Google\Chrome\Application\chrome.exe' 
+    Set-Alias Xampp 'C:\xampp\xampp-control.exe'
 }
 catch 
 {
@@ -22,18 +21,12 @@ catch
 ### VARIABLES ##
 try 
 {
-    # run in ps @ gitrepo: pwd |%{$_.Path}| %{$_ -replace '\\', '\\'} |%{$_ +'\\'}|scb 
-    $replace = 'B:\\SITES\\'; # file path before the public_html directory
-    
+    $PSScriptRoot| Split-Path -Parent | Split-Path -Leaf | ForEach-Object{ $repo_name = $_};# the directory you are debugging
+    $PSScriptRoot| Split-Path -Parent | Split-Path -Parent | ForEach-Object{ $base_dir = $_ + '\'}; # file path before the public_html directory
+    $replace = $base_dir -replace '\\', '\\'; # file path before the public_html directory
     $xampp_dir = 'C:\xampp\htdocs\'; # where xampp is to debug php scripts
     $xampp = 'C:\xampp\'; # xampp folder
-    
-    # run in ps @ gitrepo: pwd |%{$_.Path}|%{$_ + '\'}|scb
-    $base_dir = 'B:\SITES\'; # file path before the public_html directory
-    
-    $repo_name = 'BrandonFongMusic'; # the directory you are debugging 
-    $git_repo_dir = $base_dir.ToString() + $repo_name.ToString() + '\'; # entire path to public_html
-    $scripts_dir = $git_repo_dir + 'Scripts'; # Path to the scripts folder inside public_html
+    $PSScriptRoot| Split-Path -Parent | ForEach-Object{ $git_repo_dir = $_ + '\'}; # entire path to public_html
     $log = $git_repo_dir + "logs\"; # making log dir
     $logfile = $log + "debug.log"; # debug log, TODO add some content
     $local_flag = $log + ".is_local"; # flag to tell site that we are doing some things locally
@@ -55,7 +48,7 @@ Write-Warning "It's going to ask if you want to remove all files at C:\xampp\htd
 Write-Warning "Just say yes to all of if you are okay with it.";
 Write-Warning "I suggest you move your files out of C:\xampp\htdocs\";
 
-Push-Location $scripts_dir; 
+Push-Location $PSScriptRoot; 
     $temp = $xampp_dir + $repo_name;
     if(!(Test-Path $xampp))
     {
@@ -191,7 +184,8 @@ Push-Location $scripts_dir;
         Start-Sleep -s 3;
         try 
         {
-            chrome "localhost";
+            xampp; # Openning xampp to start the localhost server
+            chrome "localhost"; # Opening chrome to see the site
         }
         catch
         {
