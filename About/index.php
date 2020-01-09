@@ -1,6 +1,10 @@
 <!doctype html>
 <html lang="en">
-    <?php include '../php/head.php'; ?>
+    <?php 
+        global $currpage;
+        $currpage = "Home"; // Include this to distinguish the page for the other php
+        include 'php/head.php'; 
+    ?>
 <body>
 
 <div id="layout">
