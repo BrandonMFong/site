@@ -6,7 +6,6 @@
 #   - scripts is in the base folder of your repo (should be)
 
 ############################## I M P O R T A N T ############################################
-# PLEASE EDIT THESE VAIRABLES IF THEY DON'T MATCH YOUR MACHINE
 try 
 {
     set-alias Chrome 'C:\Program Files (x86)\Google\Chrome\Application\chrome.exe' 
@@ -21,12 +20,14 @@ catch
 ### VARIABLES ##
 try 
 {
+    # Where you are copying to
+    $destination_parent_dir = 'C:\xampp\'; # xampp folder
+    $destination_dir = 'C:\xampp\htdocs\'; # where xampp is to debug php scripts
     $PSScriptRoot| Split-Path -Parent | Split-Path -Leaf | ForEach-Object{ $repo_name = $_};# the directory you are debugging
     $PSScriptRoot| Split-Path -Parent | Split-Path -Parent | ForEach-Object{ $base_dir = $_ + '\'}; # file path before the public_html directory
     $replace = $base_dir -replace '\\', '\\'; # file path before the public_html directory
-    $xampp_dir = 'C:\xampp\htdocs\'; # where xampp is to debug php scripts
-    $xampp = 'C:\xampp\'; # xampp folder
     $PSScriptRoot| Split-Path -Parent | ForEach-Object{ $git_repo_dir = $_ + '\'}; # entire path to public_html
+    $site_in_destination_folder = $destination_dir + $repo_name; # This is where the current public_html is at in the htdocs
     $log = $git_repo_dir + "logs\"; # making log dir
     $logfile = $log + "debug.log"; # debug log, TODO add some content
     $local_flag = $log + ".is_local"; # flag to tell site that we are doing some things locally
@@ -37,39 +38,37 @@ try
 catch
 {
     Write-Warning $_;
-    Write-Warning "Please input correct variables that describes where the git repo is on your machine";
-    Write-Warning "Variables on in setup-env.ps1";
+    Write-Warning "Variables in setup-env.ps1";
     Write-Host "`n Exiting program...";
     exit;
 }
 ############################## I M P O R T A N T ############################################
 
-Write-Warning "It's going to ask if you want to remove all files at C:\xampp\htdocs\";
+Write-Warning "It's going to ask if you want to overwrite the current: "; $site_in_destination_folder;
 Write-Warning "Just say yes to all of if you are okay with it.";
-Write-Warning "I suggest you move your files out of C:\xampp\htdocs\";
 
 Push-Location $PSScriptRoot; 
-    $temp = $xampp_dir + $repo_name;
-    if(!(Test-Path $xampp))
+
+    if(!(Test-Path $destination_parent_dir))
     {
         Write-Warning "Xampp is not downloaded on this machine or it is located somewhere different.";
         Write-Host "Making directory but need the program to run local website.";
         Write-Host "Download link: https://www.apachefriends.org/download.html";
         try{write-host "Opening download link..."; chrome "https://www.apachefriends.org/download.html";}
         catch{Write-Host "Could not open link."; Write-Host $_;}
-        mkdir $xampp;
-        mkdir $xampp_dir;
-        Write-Host "Successfully made " $xampp_dir " & " $xampp;
+        mkdir $destination_parent_dir;
+        mkdir $destination_dir;
+        Write-Host "Successfully made " $destination_dir " & " $destination_parent_dir;
     }
     # Removes files
-    if(Test-Path $temp)
+    if(Test-Path $site_in_destination_folder)
     {
-        Write-Host "There are files here, going to clear out directory...";
+        Write-Host "`n`nThere are files here, going to clear out directory...";
         Write-Warning "Deleting folder:";
-        Write-Host $temp;
+        Write-Host $site_in_destination_folder;
         try 
         {
-            Remove-Item $temp -Force -Confirm; # Just say "Yes to All"
+            Remove-Item $site_in_destination_folder -Force -Confirm; # Just say "Yes to All"
         }
         catch 
         {
@@ -83,9 +82,6 @@ Push-Location $PSScriptRoot;
 
     # Copies files
     Push-Location $base_dir;
-        # This is just miscelleneous.  Don't need this
-        if (Test-Path $git_repo_dir){ Get-ChildItem | Where-Object{$_.Name -eq $repo_name;}| ForEach-Object{$path = $_.FullName};}
-
         # This command showed me that I needed this script
         #Copy-Item .\BrandonFongMusic\* $dir; 
 
@@ -115,12 +111,12 @@ Push-Location $PSScriptRoot;
             Write-Host $directory[$j] " --> " $new_directory[$j]; 
         }
 
-        Write-Host "Appending " $xampp_dir " and making directory";
+        Write-Host "Appending " $destination_dir " and making directory";
         
         $destination = [System.Collections.ArrayList]::new(); 
         for($j = 0; $j -lt $new_directory.Count; $j++)
         {
-            $destination.Add($xampp_dir.ToString() + $new_directory[$j].ToString());
+            $destination.Add($destination_dir.ToString() + $new_directory[$j].ToString());
             Write-Host $new_directory[$j] " --> " $destination[$j];
             try # in the case if the directory already exists
             {
@@ -156,21 +152,12 @@ Push-Location $PSScriptRoot;
         {
             for($d = 0; $d -lt $directory.Count; $d++)
             {
-                if($files_base_dir[$k] -eq $base_directory[$d])# error here because .vscode contains .vs
+                # if the folder in your current directory matches the folder for xampp/htdocs
+                # copy all the files in the that directory to the directory iin xampp/htdocs
+                if($files_base_dir[$k] -eq $base_directory[$d]) 
                 {
-                    # for($m = 0; $m -lt $directory.Count; $m++)
-                    # {
-                    #     # trying to get the max length of the directory 
-                    #     # safe to say that is the true directory the want
-                    #     # kind of like a sorting algorithm here
-                    #     if(($files[$k].Contains($directory[$m])) -and ($directory[$m] -gt $directory[$d]))
-                    #     {
-                    #         $d = $m;
-                    #     }
-                    # }
                     Copy-Item $files[$k] $destination[$d];
-                    Write-Host "Copied" $files[$k] " to " $destination[$d]; # stuck in a loop here
-                    
+                    Write-Host "Copied" $files[$k] " to " $destination[$d];
                 }
                 Write-Progress -Activity 'Copying Files' -Status 'Progress:' -PercentComplete $d; 
             }
@@ -179,9 +166,11 @@ Push-Location $PSScriptRoot;
         Write-Progress -Activity 'Success.  Finishing final steps.';
         Write-Host "`nSuccessfully copied files`n";
         
-        Write-Host "Copied Items from " $path " to " $xampp_dir;
+        Write-Host "Copied Items from " $repo_name " to " $destination_dir;
         Write-Host "`nOpening browser @ localhost in 3 seconds...";
         Start-Sleep -s 3;
+
+        # Start Site
         try 
         {
             xampp; # Openning xampp to start the localhost server
