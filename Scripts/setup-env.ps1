@@ -173,7 +173,7 @@ Push-Location $PSScriptRoot;
         # Start Site
         try 
         {
-            xampp; # Openning xampp to start the localhost server
+            #xampp; # Openning xampp to start the localhost server
             chrome "localhost"; # Opening chrome to see the site
         }
         catch

@@ -2,8 +2,8 @@
 <html lang="en">
     <?php 
         global $currpage;
-        $currpage = "Home"; // Include this to distinguish the page for the other php
-        include 'php/head.php'; 
+        $currpage = "About"; // Include this to distinguish the page for the other php
+        include '../php/head.php'; 
     ?>
 <body>
 
@@ -52,16 +52,11 @@
         </div>
         <!-- TODO put this in a DB -->
         <div class="content">
-            <h1>About</h1>
-			<p>
-				Brandon Fong was raised in the Bay Area.  Growing up in Hercules, CA was where he found is love for music.  First finding his bearings in Tahitian drumming, he then after picked up the Ukulele, Guitar and Piano.  Guitar is his instrument of choice for its portability and calming nature.<br>
-			</p>
-			<p>
-				Brandon has music on <a href="https://www.youtube.com/user/TheFongBoy">Youtube</a>, <a href="https://soundcloud.com/brandonfong">SoundCloud</a>, and <a href="https://open.spotify.com/artist/1AJ0HggT32RRsEbTvC6tF2?si=pqWrTK96TAmwHfXz78KcMQ">Spotify.</a>  He has released two EPs, "Began" and "Let's Dance".He is currently focusing on his "Stuck in the Clouds" Demo project.<br>
-			</p>
-			<p>
-				Today, he is finishing his Bachelors in Computer Engineering at San Diego State University.  He works for Kiran Analytics in La Jolla and volunteers his Fridays to play music to seniors at UCSD Health.
-			</p>
+            <?php 
+                global $Type;
+                $Type = "About";
+                include '../php/Media_Query.php';
+            ?>
 			
         </div>
 
