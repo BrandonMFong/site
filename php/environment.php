@@ -26,7 +26,7 @@
                 $servername = "localhost";
                 $username = "u820870703_BrandonMFong";
                 $password = "bfmusic27182";
-                $dbname = 'bf_music';
+                $dbname = 'u820870703_bf_music';
                 $css = 'https://BrandonFongMusic.com/css/layouts/stylesheet.css';
                 $js = 'https://BrandonFongMusic.com/js/ui.js';
                 break;
@@ -49,7 +49,7 @@
                 $servername = "localhost";
                 $username = "u820870703_BrandonMFong";
                 $password = "bfmusic27182";
-                $dbname = 'bf_music';
+                $dbname = 'u820870703_bf_music';
                 $css = 'https://BrandonFongMusic.com/css/layouts/stylesheet.css';
                 $js = 'https://BrandonFongMusic.com/js/ui.js';
                 break;
