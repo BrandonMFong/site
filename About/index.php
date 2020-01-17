@@ -14,7 +14,7 @@
         <span></span>
     </a>
 
-    <div id="menu"><?php include 'php/Side_Menu.php';?></div>
+    <div id="menu"><?php include '../php/Side_Menu.php';?></div>
 
     <div id="main">
         <div class="header">
