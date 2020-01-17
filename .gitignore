@@ -1,6 +1,7 @@
-logs
-.vscode
-.well-knowns
-SSH
+logs/*
+.vscode/*
+.well-knowns/*
+SSH/*
 .DS_Store
 init/
+archive/*
