@@ -27,7 +27,7 @@
                 $css            = 'http://localhost/BrandonFongMusic/css/layouts/stylesheet.css';
                 $js             = 'http://localhost/BrandonFongMusic/js/ui.js';
                 $home           = 'http://localhost/BrandonFongMusic';
-                $about          = 'http://localhost/BrandonFongMusic/About';
+                $about          = 'http://localhost/BrandonFongMusic/About/';
                 $youtube        = 'https://www.youtube.com/user/TheFongBoy';
                 $soundcloud     = 'https://soundcloud.com/brandonfong';
                 $facebook_page  = 'https://www.facebook.com/BrandonFongMusic';
@@ -44,7 +44,7 @@
                 $css            = 'https://BrandonFongMusic.com/css/layouts/stylesheet.css';
                 $js             = 'https://BrandonFongMusic.com/js/ui.js';
                 $home           = 'https://www.brandonfongmusic.com';
-                $about          = 'https://www.brandonfongmusic.com/About';
+                $about          = 'https://www.brandonfongmusic.com/About/';
                 $youtube        = 'https://www.youtube.com/user/TheFongBoy';
                 $soundcloud     = 'https://soundcloud.com/brandonfong';
                 $facebook_page  = 'https://www.facebook.com/BrandonFongMusic';
@@ -64,7 +64,7 @@
                 $css            = 'http://localhost/BrandonFongMusic/css/layouts/stylesheet.css';
                 $js             = 'http://localhost/BrandonFongMusic/js/ui.js';
                 $home           = 'http://localhost/BrandonFongMusic';
-                $about          = 'http://localhost/BrandonFongMusic/About';
+                $about          = 'http://localhost/BrandonFongMusic/About/';
                 $youtube        = 'https://www.youtube.com/user/TheFongBoy';
                 $soundcloud     = 'https://soundcloud.com/brandonfong';
                 $facebook_page  = 'https://www.facebook.com/BrandonFongMusic';
@@ -81,7 +81,7 @@
                 $css            = 'https://BrandonFongMusic.com/css/layouts/stylesheet.css';
                 $js             = 'https://BrandonFongMusic.com/js/ui.js';
                 $home           = 'https://www.brandonfongmusic.com';
-                $about          = 'https://www.brandonfongmusic.com/About';
+                $about          = 'https://www.brandonfongmusic.com/About/';
                 $youtube        = 'https://www.youtube.com/user/TheFongBoy';
                 $soundcloud     = 'https://soundcloud.com/brandonfong';
                 $facebook_page  = 'https://www.facebook.com/BrandonFongMusic';
