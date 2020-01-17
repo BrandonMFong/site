@@ -18,10 +18,9 @@
                 on tc.ID = sc.Type_ID
         where
             tc.Type = '$Type'
-            and
-            sc.Time >= curdate()
-
 	";
+	// Goal was to keep all past content in database but I don't know if that will happen
+	// TODO figure this out
 	$result = $conn->query($sql);
 
 	if ($result->num_rows > 0) 
