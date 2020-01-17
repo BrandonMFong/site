@@ -9,7 +9,7 @@
                 </li>
 
                 <li class=\"pure-menu-item\">
-                    <a href=\"" . $About . "\" class=\"pure-menu-link\">About</a>
+                    <a href=\"" . $about . "\" class=\"pure-menu-link\">About</a>
                 </li>
 
                 <li class=\"pure-menu-item\">
