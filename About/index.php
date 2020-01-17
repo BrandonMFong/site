@@ -14,36 +14,7 @@
         <span></span>
     </a>
 
-    <div id="menu">
-        <div class="pure-menu">
-
-            <ul class="pure-menu-list">
-                <!--<li class="pure-menu-item menu-item-divided pure-menu-selected"> -->
-                <li class="pure-menu-item">
-                    <a href="https://www.brandonfongmusic.com" class="pure-menu-link">Home</a>
-                </li>
-                <li class="pure-menu-item">
-                    <a href="https://www.brandonfongmusic.com/About" class="pure-menu-link">About</a>
-                </li>
-					<li class="pure-menu-item">
-						<a href="https://www.youtube.com/user/TheFongBoy" class="pure-menu-link">Youtube</a>
-					</li>
-
-                <li class="pure-menu-item">
-                    <a href="https://soundcloud.com/brandonfong" class="pure-menu-link">SoundCloud</a>
-                </li>
-                <li class="pure-menu-item">
-                    <a href="https://www.facebook.com/BrandonFongMusic" class="pure-menu-link">Facebook</a>
-                </li>
-                <li class="pure-menu-item">
-                    <a href="https://open.spotify.com/artist/1AJ0HggT32RRsEbTvC6tF2?si=pqWrTK96TAmwHfXz78KcMQ" class="pure-menu-link">Spotify</a>
-                </li>
-                <li class="pure-menu-item">
-                    <a href="https://www.instagram.com/bmfong/" class="pure-menu-link">Instagram</a>
-                </li>
-            </ul>
-        </div>
-    </div>
+    <div id="menu"><?php include 'php/Side_Menu.php';?></div>
 
     <div id="main">
         <div class="header">

@@ -6,6 +6,13 @@
     global $username;
     global $password;
     global $dbname;
+    global $home;
+    global $about;
+    global $youtube;
+    global $soundcloud;
+    global $facebook_page;
+    global $spotify;
+    global $instagram;
     
     switch($currpage)
     {
