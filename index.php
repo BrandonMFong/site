@@ -32,22 +32,22 @@
         <div class="slideshow-container">
             <!-- Full-width images with number and caption text -->
             <div class="mySlides fade">
-                <img src="img/DualPower/DatabaseSruct_Diagram.PNG" style="max-height: 500px;width:100%">
+                    <img src="img/DualPower/DatabaseSruct_Diagram.PNG" class="ImageSlides">
             </div>
             <div class="mySlides fade">
-                <img src="img/DualPower/FinalLogo.PNG" style="max-height: 500px;width:100%">
+                    <img src="img/DualPower/FinalLogo.PNG" class="ImageSlides">
             </div>
             <div class="mySlides fade">
-                <img src="img/DualPower/InsertDB_Diagram.PNG" style="max-height: 500px;width:100%">
+                    <img src="img/DualPower/InsertDB_Diagram.PNG" class="ImageSlides">
             </div>
             <div class="mySlides fade">
-                <img src="img/DualPower/Max_Pwr_Tracker_Coding_Diagram.PNG" style="max-height: 500px;width:100%">
+                    <img src="img/DualPower/Max_Pwr_Tracker_Coding_Diagram.PNG" class="ImageSlides">
             </div>
             <div class="mySlides fade">
-                <img src="img/DualPower/OverallDiagram.PNG" style="max-height: 500px;width:100%">
+                    <img src="img/DualPower/OverallDiagram.PNG" class="ImageSlides">
             </div>
             <div class="mySlides fade">
-                <img src="img/DualPower/PhotoOfEquipment.PNG" style="max-height: 500px;width:100%">
+                    <img src="img/DualPower/PhotoOfEquipment.PNG" class="ImageSlides">
             </div>
 
             <!-- Next and previous buttons -->
