@@ -6,9 +6,63 @@
         echo "<head>";
             echo "<title>" . $XMLReader->SiteTitle . "</title>";
             echo "<meta charset=\"UTF-8\">";
+            foreach($XMLReader->Header->StyleSheets as $ref){echo "<link rel=\"stylesheet\" href=\"" . $ref . "\">";}
         echo "</head>";
     ?>
     <body>
-        <h>Hello World!</h>
+        <?php 
+            // Site header
+            echo "<h1>" . $XMLReader->SiteTitle . "</h1>";
+        ?>
+        <?php 
+            // Links
+            foreach($XMLReader->Links->Link as $link)
+            {
+                echo "<a href=\"" . $link->URL . "\">" . $link->Name . "</a> ";
+            }
+        ?>
+        <p>
+            Brandon Fong is born and raised in the Bay Area, Hercules California.  He went to Hercules High School and currently attending San Diego State University 
+            for his Bachelor's in Science in Computer Engineering.  He is currently employed by Kiran Analytics as an Associate Support Consultant since July 2019.
+        </p>
+
+        <h2>Projects</h2>
+        <h3>Dual Power Generation</h3>
+        <!-- Slideshow container -->
+        <div class="slideshow-container">
+            <!-- Full-width images with number and caption text -->
+            <div class="mySlides fade">
+                <img src="img/DualPower/DatabaseSruct_Diagram.PNG" style="max-height: 500px;width:100%">
+            </div>
+            <div class="mySlides fade">
+                <img src="img/DualPower/FinalLogo.PNG" style="max-height: 500px;width:100%">
+            </div>
+            <div class="mySlides fade">
+                <img src="img/DualPower/InsertDB_Diagram.PNG" style="max-height: 500px;width:100%">
+            </div>
+            <div class="mySlides fade">
+                <img src="img/DualPower/Max_Pwr_Tracker_Coding_Diagram.PNG" style="max-height: 500px;width:100%">
+            </div>
+            <div class="mySlides fade">
+                <img src="img/DualPower/OverallDiagram.PNG" style="max-height: 500px;width:100%">
+            </div>
+            <div class="mySlides fade">
+                <img src="img/DualPower/PhotoOfEquipment.PNG" style="max-height: 500px;width:100%">
+            </div>
+
+            <!-- Next and previous buttons -->
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+        <br>
+
+        <!-- The dots/circles -->
+        <div style="text-align:center">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+
+        <script src="js/SlideShow.js"></script>
     </body>
 </html>

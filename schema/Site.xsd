@@ -1,4 +1,15 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <xs:schema xmlns:xs = "http://www.w3.org/2001/XMLSchema">
-   <xs:element name="SiteTitle" type="xs:string"/>
+   <xs:element name="Site">
+      <xs:element name="SiteTitle" type="xs:string"/>
+      <xs:element name="Header">
+         <xs:element name="StyleSheets" type="xs:string"/>
+      </xs:element>
+      <xs:element name="Links">
+         <xs:element name="Link">
+            <xs:element name="Name"/>
+            <xs:element name="URL"/>
+         </xs:element>
+      </xs:element>
+   </xs:element>
 </xs:schema>
