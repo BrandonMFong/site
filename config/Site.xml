@@ -16,12 +16,16 @@
             <URL>https://www.linkedin.com/in/brandonmfong/</URL>
         </Link>
     </Links>
-    <SlideShow>
-        <ImageFile>img/DualPower/FinalLogo.PNG</ImageFile>
-        <ImageFile>img/DualPower/PhotoOfEquipment.PNG</ImageFile>
-        <ImageFile>img/DualPower/DatabaseSruct_Diagram.PNG</ImageFile>
-        <ImageFile>img/DualPower/InsertDB_Diagram.PNG</ImageFile>
-        <ImageFile>img/DualPower/Max_Pwr_Tracker_Coding_Diagram.PNG</ImageFile>
-        <ImageFile>img/DualPower/OverallDiagram.PNG</ImageFile>
-    </SlideShow>
+    <Projects>
+        <Project Topic="Dual Power Generation">
+            <SlideShow>
+                <ImageFile>img/DualPower/FinalLogo.PNG</ImageFile>
+                <ImageFile>img/DualPower/PhotoOfEquipment.PNG</ImageFile>
+                <ImageFile>img/DualPower/DatabaseSruct_Diagram.PNG</ImageFile>
+                <ImageFile>img/DualPower/InsertDB_Diagram.PNG</ImageFile>
+                <ImageFile>img/DualPower/Max_Pwr_Tracker_Coding_Diagram.PNG</ImageFile>
+                <ImageFile>img/DualPower/OverallDiagram.PNG</ImageFile>
+            </SlideShow>
+        </Project>
+    </Projects>
 </Site>

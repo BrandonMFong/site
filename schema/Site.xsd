@@ -2,13 +2,24 @@
 <xs:schema xmlns:xs = "http://www.w3.org/2001/XMLSchema">
    <xs:element name="Site">
       <xs:element name="SiteTitle" type="xs:string"/>
+      <!-- Contains all header elements -->
       <xs:element name="Header">
          <xs:element name="StyleSheets" type="xs:string"/>
       </xs:element>
+      <!-- Contains all links to go somewhere else -->
       <xs:element name="Links">
          <xs:element name="Link">
             <xs:element name="Name"/>
             <xs:element name="URL"/>
+         </xs:element>
+      </xs:element>
+      <!-- Slide shows -->
+      <xs:element name="Projects">
+         <xs:element name="Project">
+            <xs:attribute name="Topic"/>
+            <xs:element name="SlideShow">
+               <xs:element name="ImageFile"/>
+            </xs:element>
          </xs:element>
       </xs:element>
    </xs:element>

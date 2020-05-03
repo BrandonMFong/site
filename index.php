@@ -4,9 +4,9 @@
         // Load xml
         $XMLReader = simplexml_load_file("config/Site.xml") or die("Failed to load");
         echo "<head>";
-            echo "<title>" . $XMLReader->SiteTitle . "</title>";
-            echo "<meta charset=\"UTF-8\">";
-            foreach($XMLReader->Header->StyleSheets as $ref){echo "<link rel=\"stylesheet\" href=\"" . $ref . "\">";}
+        echo "<title>" . $XMLReader->SiteTitle . "</title>";
+        echo "<meta charset=\"UTF-8\">";
+        foreach($XMLReader->Header->StyleSheets as $ref){echo "<link rel=\"stylesheet\" href=\"" . $ref . "\">";}
         echo "</head>";
     ?>
     <body>
@@ -26,22 +26,27 @@
             for his Bachelor's in Science in Computer Engineering.  He is currently employed by Kiran Analytics as an Associate Support Consultant since July 2019.
         </p>
 
-        <h2>Projects</h2>
-        <h3>Dual Power Generation</h3>
+        
 
         <?php 
-            // SlideShow Container
-            echo "<div class=\"slideshow-container\">";
-            foreach($XMLReader->SlideShow->ImageFile as $Image)
+            // Projects
+            echo "<h2>Projects</h2>";
+            foreach($XMLReader->Projects->Project as $Project)
             {
-                echo "<div class=\"mySlides fade\">";
-                echo "<img src=\"" . $Image . "\" class=\"ImageSlides\">";
-                echo "</div>";
-            }
-            echo "<a class=\"prev\" onclick=\"plusSlides(-1)\">&#10094;</a>";
-            echo "<a class=\"next\" onclick=\"plusSlides(1)\">&#10095;</a>";
-            echo "</div><br>";
+                echo "<h3>". $Project['Topic'] . "</h3>";
 
+                // SlideShow Container
+                echo "<div class=\"slideshow-container border-box\">";
+                foreach($Project->SlideShow->ImageFile as $Image)
+                {
+                    echo "<div class=\"mySlides\">";
+                    echo "<img src=\"" . $Image . "\" class=\"ImageSlides\">";
+                    echo "</div>";
+                }
+                echo "<a class=\"prev\" onclick=\"plusSlides(-1)\">&#10094;</a>";
+                echo "<a class=\"next\" onclick=\"plusSlides(1)\">&#10095;</a>";
+                echo "</div><br>";
+            }
         ?>
         <script src="js/SlideShow.js"></script>
     </body>
