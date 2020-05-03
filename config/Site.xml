@@ -18,6 +18,10 @@
     </Links>
     <Projects>
         <Project Topic="Dual Power Generation">
+            <Description>
+                Dual Power Generation is a Senior Design Project.  Our goal was to turn Solar and Wind into energy.  The group consisted of Electrical and Computer Engineers.  
+                As a Computer Engineer, my role was to calculate the Max Power between Solar and Wind and display the information to our end user.  
+            </Description>
             <SlideShow>
                 <ImageFile>img/DualPower/FinalLogo.PNG</ImageFile>
                 <ImageFile>img/DualPower/PhotoOfEquipment.PNG</ImageFile>
@@ -26,6 +30,13 @@
                 <ImageFile>img/DualPower/Max_Pwr_Tracker_Coding_Diagram.PNG</ImageFile>
                 <ImageFile>img/DualPower/OverallDiagram.PNG</ImageFile>
             </SlideShow>
+        </Project>
+        <Project Topic="GlobalScripts">
+            <Description>
+                Dual Power Generation is a Senior Design Project.  Our goal was to turn Solar and Wind into energy.  The group consisted of Electrical and Computer Engineers.  
+                As a Computer Engineer, my role was to calculate the Max Power between Solar and Wind and display the information to our end user.  
+            </Description>
+        
         </Project>
     </Projects>
 </Site>

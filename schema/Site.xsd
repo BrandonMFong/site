@@ -17,6 +17,7 @@
       <xs:element name="Projects">
          <xs:element name="Project">
             <xs:attribute name="Topic"/>
+            <xs:element name="Description"/>
             <xs:element name="SlideShow">
                <xs:element name="ImageFile"/>
             </xs:element>
