@@ -6,8 +6,8 @@
 /* Slideshow container */
 
 .slideshow-container {
-    max-width: 1000px;
-    max-height: 1000px;
+    max-width: 500px;
+    max-height: 500px;
     position: relative;
     margin: auto;
 }
@@ -18,6 +18,7 @@ img.ImageSlides {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    object-fit: scale-down;
 }
 
 

@@ -17,11 +17,11 @@
         </Link>
     </Links>
     <SlideShow>
-        <ImageFile>img/DualPower/DatabaseSruct_Diagram.PNG</ImageFile>
         <ImageFile>img/DualPower/FinalLogo.PNG</ImageFile>
+        <ImageFile>img/DualPower/PhotoOfEquipment.PNG</ImageFile>
+        <ImageFile>img/DualPower/DatabaseSruct_Diagram.PNG</ImageFile>
         <ImageFile>img/DualPower/InsertDB_Diagram.PNG</ImageFile>
         <ImageFile>img/DualPower/Max_Pwr_Tracker_Coding_Diagram.PNG</ImageFile>
         <ImageFile>img/DualPower/OverallDiagram.PNG</ImageFile>
-        <ImageFile>img/DualPower/PhotoOfEquipment.PNG</ImageFile>
     </SlideShow>
 </Site>

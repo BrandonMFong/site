@@ -32,7 +32,7 @@
         <?php 
             // SlideShow Container
             echo "<div class=\"slideshow-container\">";
-            foreach($XMLReader->Site->SlideShow as $Image)
+            foreach($XMLReader->SlideShow->ImageFile as $Image)
             {
                 echo "<div class=\"mySlides fade\">";
                 echo "<img src=\"" . $Image . "\" class=\"ImageSlides\">";
@@ -42,47 +42,7 @@
             echo "<a class=\"next\" onclick=\"plusSlides(1)\">&#10095;</a>";
             echo "</div><br>";
 
-            echo "<div style=\"text-align:center\">";
-            for($i = 0; $i < $XMLReader->Site->SlideShow->count(); $i++)
-            {
-                echo "<span class=\"dot\" onclick=\"currentSlide(". $i+1 . ")\"></span>";
-            }
-            echo "</div>";
         ?>
-        <!-- Slideshow container -->
-        <!-- <div class="slideshow-container">
-            <div class="mySlides fade">
-                    <img src="img/DualPower/DatabaseSruct_Diagram.PNG" class="ImageSlides">
-            </div>
-            <div class="mySlides fade">
-                    <img src="img/DualPower/FinalLogo.PNG" class="ImageSlides">
-            </div>
-            <div class="mySlides fade">
-                    <img src="img/DualPower/InsertDB_Diagram.PNG" class="ImageSlides">
-            </div>
-            <div class="mySlides fade">
-                    <img src="img/DualPower/Max_Pwr_Tracker_Coding_Diagram.PNG" class="ImageSlides">
-            </div>
-            <div class="mySlides fade">
-                    <img src="img/DualPower/OverallDiagram.PNG" class="ImageSlides">
-            </div>
-            <div class="mySlides fade">
-                    <img src="img/DualPower/PhotoOfEquipment.PNG" class="ImageSlides">
-            </div>
-        -->
-            <!-- Next and previous buttons -->
-            <!-- <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
-        </div>
-        <br>-->
-
-        <!-- The dots/circles -->
-        <!-- <div style="text-align:center">
-            <span class="dot" onclick="currentSlide(1)"></span>
-            <span class="dot" onclick="currentSlide(2)"></span>
-            <span class="dot" onclick="currentSlide(3)"></span>
-        </div>  -->
-
         <script src="js/SlideShow.js"></script>
     </body>
 </html>
