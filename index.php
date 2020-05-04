@@ -10,14 +10,15 @@
         echo "</head>";
     ?>
     <body>
-        <?php 
-            // Site header
-            echo "<h1>" . $XMLReader->SiteTitle . "</h1>";
-        ?>
-        <?php 
-            // Links
-            foreach($XMLReader->Links->Link as $link){echo "<a href=\"" . $link->URL . "\">" . $link->Name . "</a> ";}
-        ?>
+        <div class="hero-image">
+            <div class="hero-text">
+                <?php 
+                    // Links
+                    foreach($XMLReader->Links->Link as $link){echo "<a href=\"" . $link->URL . "\" class=\"button\">" . $link->Name . "</a> ";}
+                ?>
+            </div>
+        </div>
+
         <p>
             Brandon Fong is born and raised in the Bay Area, Hercules California.  He went to Hercules High School and currently attending San Diego State University 
             for his Bachelor's in Science in Computer Engineering.  He is currently employed by Kiran Analytics as an Associate Support Consultant since July 2019.
