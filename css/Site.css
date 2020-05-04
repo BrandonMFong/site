@@ -1,0 +1,19 @@
+/* Project division */
+
+.Project {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    display: block;
+    clear: both;
+}
+
+.Project-Title {
+    margin-top: 3px;
+    margin-bottom: 3px;
+    font-weight: bold;
+}
+
+.Project-Description {
+    margin-top: 3px;
+    margin-bottom: 3px;
+}

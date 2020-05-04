@@ -33,15 +33,17 @@
             echo "<h2>Projects</h2>";
             foreach($XMLReader->Projects->Project as $Project)
             {
-                echo "<h3>" . $Project['Topic'] . "</h3>";
-                echo "<p>" . $Project->Description . "</p>";
+                echo "<div class=\"Project\">";
+                echo "<div class=\"Project-Title\">" . $Project['Topic'] . "</div>";
+                echo "<div class=\"Project-Description\">" . $Project->Description . "</div>";
+                
                 // SlideShow Container
                 if(!empty($Project->SlideShow))
                 {
                     echo "<div class=\"slideshow-container border-box\">";
                     foreach($Project->SlideShow->ImageFile as $Image)
                     {
-                        echo "<div class=\"mySlides\">";
+                        echo "<div class=\"Slide\">";
                         echo "<img src=\"" . $Image . "\" class=\"ImageSlides\">";
                         echo "</div>";
                     }
@@ -49,6 +51,7 @@
                     echo "<a class=\"next\" onclick=\"plusSlides(1)\">&#10095;</a>";
                     echo "</div>";
                 }
+                echo "</div>";
             }
         ?>
         <script src="js/SlideShow.js"></script>

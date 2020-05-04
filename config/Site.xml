@@ -5,6 +5,7 @@
     <SiteTitle>Brandon Fong</SiteTitle>
     <Header>
         <StyleSheets>css/SlideShow.css</StyleSheets>
+        <StyleSheets>css/Site.css</StyleSheets>
     </Header>
     <Links>
         <Link>
@@ -33,8 +34,11 @@
         </Project>
         <Project Topic="GlobalScripts">
             <Description>
-                Dual Power Generation is a Senior Design Project.  Our goal was to turn Solar and Wind into energy.  The group consisted of Electrical and Computer Engineers.  
-                As a Computer Engineer, my role was to calculate the Max Power between Solar and Wind and display the information to our end user.  
+                GlobalScripts is a personal powershell project.  When using powershell, the GlobalScript code defines framework in powershell that can be used 
+                throughout the powershell session time. 
+                &lt;br&gt;&lt;br&gt;
+                The code uses PowerShell, SQL Server, and XML.  Powershell for the obvious reasons.  SQL Server for private data that should not be shared.  XML is to define the 
+                specific environment the code is running on (i.e. different computers and the directories on them).
             </Description>
         
         </Project>

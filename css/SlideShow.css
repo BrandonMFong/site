@@ -4,7 +4,13 @@
     margin: auto;
     position: relative;
     width: 1000px;
-    height: 500px;
+    height: 300px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.border-box {
+    border: 3px solid rgb(3, 3, 3);
 }
 
 img.ImageSlides {
@@ -12,19 +18,14 @@ img.ImageSlides {
     margin-left: auto;
     margin-right: auto;
     object-fit: contain;
-    max-width: 900px;
-    max-height: 400px;
-}
-
-.border-box {
-    position: absolute;
-    border: 3px solid rgb(3, 3, 3);
+    width: 1000px;
+    height: 300px;
 }
 
 
 /* Hide the images by default */
 
-.mySlides {
+.Slide {
     display: none;
 }
 
@@ -63,7 +64,6 @@ img.ImageSlides {
     color: #f2f2f2;
     font-size: 15px;
     padding: 8px 12px;
-    position: absolute;
     bottom: 8px;
     width: 100%;
     text-align: center;
