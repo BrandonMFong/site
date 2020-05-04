@@ -2,8 +2,8 @@ var slideIndex = 1;
 showSlides(slideIndex);
 
 // Next/previous controls
-function plusSlides(n) {
-    showSlides(slideIndex += n);
+function plusSlides(n, ClassSlide) {
+    showSlides(slideIndex += n, ClassSlide);
 }
 
 // Thumbnail image controls
@@ -11,9 +11,10 @@ function currentSlide(n) {
     showSlides(slideIndex = n);
 }
 
-function showSlides(n) {
+
+function showSlides(n, ClassSlide) {
     var i;
-    var slides = document.getElementsByClassName("Slide");
+    var slides = document.getElementsByClassName(ClassSlide);
     var dots = document.getElementsByClassName("dot");
     if (n > slides.length) { slideIndex = 1 }
     if (n < 1) { slideIndex = slides.length }

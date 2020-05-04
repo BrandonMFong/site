@@ -7,6 +7,12 @@
         <StyleSheets>css/SlideShow.css</StyleSheets>
         <StyleSheets>css/Site.css</StyleSheets>
     </Header>
+    <Scripts>
+        <Script>js/SlideShow.js</Script>
+    </Scripts>
+    <Footer>
+        <Copyright>@year Brandon Fong All Rights Reserved</Copyright>
+    </Footer>
     <Links>
         <Link>
             <Name>GitHub</Name>
@@ -40,7 +46,20 @@
                 The code uses PowerShell, SQL Server, and XML.  Powershell for the obvious reasons.  SQL Server for private data that should not be shared.  XML is to define the 
                 specific environment the code is running on (i.e. different computers and the directories on them).
             </Description>
-        
+            <SlideShow>
+                <ImageFile>img/GlobalScripts/Dashboard.PNG</ImageFile>
+                <ImageFile>img/GlobalScripts/Dashboard2.PNG</ImageFile>
+            </SlideShow>
+        </Project>
+        <Project Topic="Sentry2.0">
+            <Description>
+                Sentry2.0 was designed to set an alarm off when a key is pressed on my computer or when my mouse moved.
+            </Description>
+        </Project>
+        <Project Topic="Site">
+            <Description>
+                This site is actually a personal project of mine.  Programmed in PHP, this site will serve as a portfolio and supplement to my current resume.
+            </Description>
         </Project>
     </Projects>
 </Site>

@@ -16,10 +16,7 @@
         ?>
         <?php 
             // Links
-            foreach($XMLReader->Links->Link as $link)
-            {
-                echo "<a href=\"" . $link->URL . "\">" . $link->Name . "</a> ";
-            }
+            foreach($XMLReader->Links->Link as $link){echo "<a href=\"" . $link->URL . "\">" . $link->Name . "</a> ";}
         ?>
         <p>
             Brandon Fong is born and raised in the Bay Area, Hercules California.  He went to Hercules High School and currently attending San Diego State University 
@@ -31,6 +28,7 @@
         <?php 
             // Projects
             echo "<h2>Projects</h2>";
+            $i = 1;
             foreach($XMLReader->Projects->Project as $Project)
             {
                 echo "<div class=\"Project\">";
@@ -43,17 +41,28 @@
                     echo "<div class=\"slideshow-container border-box\">";
                     foreach($Project->SlideShow->ImageFile as $Image)
                     {
-                        echo "<div class=\"Slide\">";
+                        echo "<div class=\"Slide SlideClass" . $i . "\">";
                         echo "<img src=\"" . $Image . "\" class=\"ImageSlides\">";
                         echo "</div>";
                     }
-                    echo "<a class=\"prev\" onclick=\"plusSlides(-1)\">&#10094;</a>";
-                    echo "<a class=\"next\" onclick=\"plusSlides(1)\">&#10095;</a>";
+                    echo "<a class=\"prev\" onclick=\"plusSlides(-1,'SlideClass" . $i . "')\">&#10094;</a>";
+                    echo "<a class=\"next\" onclick=\"plusSlides(1,'SlideClass" . $i . "')\">&#10095;</a>";
                     echo "</div>";
                 }
                 echo "</div>";
+                $i++;
             }
         ?>
-        <script src="js/SlideShow.js"></script>
+
+        <?php 
+            // Load Javascripts
+            foreach($XMLReader->Scripts->Script as $script){echo "<script src=\"" . $script . "\"></script>";}
+        ?>
+
+        <?php 
+            echo "<footer>";
+            echo "<p>© " .  str_replace("@year", date("Y"), $XMLReader->Footer->Copyright) . "</p>";
+            echo "</footer>";
+        ?>
     </body>
 </html>

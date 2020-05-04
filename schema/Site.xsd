@@ -6,6 +6,12 @@
       <xs:element name="Header">
          <xs:element name="StyleSheets" type="xs:string"/>
       </xs:element>
+      <xs:element name="Scripts">
+         <xs:element name="Script" type="xs:string"/>
+      </xs:element>
+      <xs:element name="Footer">
+         <xs:element name="Copyright" type="xs:string"/>
+      </xs:element>
       <!-- Contains all links to go somewhere else -->
       <xs:element name="Links">
          <xs:element name="Link">

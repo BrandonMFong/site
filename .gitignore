@@ -1,10 +1,9 @@
 logs/*
 .vscode/*
-.well-knowns/*
+.well-known/*
 SSH/*
 .DS_Store
 init/
 archive/*
 VCODE_Site.code-workspace
-docs/archive/*
-docs/sslforfree
+docs/*
