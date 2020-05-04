@@ -22,6 +22,10 @@
             <Name>LinkedIn</Name>
             <URL>https://www.linkedin.com/in/brandonmfong/</URL>
         </Link>
+        <Link>
+            <Name>Resume</Name>
+            <URL>docs/MAIN_RESUME.pdf</URL>
+        </Link>
     </Links>
     <Projects>
         <Project Topic="Dual Power Generation">
