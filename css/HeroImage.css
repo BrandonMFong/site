@@ -45,8 +45,8 @@ a.button {
     text-align: center;
     cursor: pointer;
 }
-a.button:hover{
-    
-  background-color: #555;
-  color: white;
+
+a.button:hover {
+    background-color: #555;
+    color: white;
 }
