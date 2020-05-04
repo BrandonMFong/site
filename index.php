@@ -62,6 +62,7 @@
         <?php 
             echo "<footer>";
             echo "<p>© " .  str_replace("@year", date("Y"), $XMLReader->Footer->Copyright) . "</p>";
+            echo "<p><a href=\"https://github.com/BrandonMFong/Site\">Open Source</a></p>";
             echo "</footer>";
         ?>
     </body>
