@@ -3,8 +3,8 @@
 .slideshow-container {
     margin: auto;
     position: relative;
-    width: 1000px;
-    height: 300px;
+    width: 505px;
+    height: 505px;
     margin-top: 50px;
     margin-bottom: 50px;
 }
@@ -18,8 +18,8 @@ img.ImageSlides {
     margin-left: auto;
     margin-right: auto;
     object-fit: contain;
-    width: 1000px;
-    height: 300px;
+    width: 500px;
+    height: 500px;
 }
 
 

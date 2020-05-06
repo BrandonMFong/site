@@ -14,21 +14,38 @@
             // Load Javascripts
             foreach($XMLReader->Scripts->Script as $script){echo "<script src=\"" . $script . "\"></script>";}
         ?>
+        <?php
+            $servername = "localhost";
+            $username = "root";
+            $password = "";
+            $dbname = "brandonmfong";
+
+            // Create connection
+            $conn = new mysqli($servername, $username, $password, $dbname);
+            // Check connection
+            if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);}
+
+            $sqlfile =  fopen("sql/GetBio.sql", "r") or die("Unable to read file.");
+            $Results = $conn->query(fread($sqlfile, filesize("sql/GetBio.sql")));
+
+            if ($Results->num_rows == 0) {echo "0 results";}
+            $conn->close();
+        ?>
         <div class="header">
             <div class="hero-text">
                 <?php 
-                    // Links
+                    // Button Links
                     foreach($XMLReader->Links->Link as $link){echo "<a href=\"" . $link->URL . "\" class=\"button\">" . $link->Name . "</a> ";}
                 ?>
             </div>
         </div>
         <div class="Content">
 
-            <p>
+            <!-- <p>
                 Brandon Fong is born and raised in the Bay Area, Hercules California.  He went to Hercules High School and currently attending San Diego State University 
                 for his Bachelor's in Science in Computer Engineering.  He is currently employed by Kiran Analytics as an Associate Support Consultant since July 2019.
-            </p>
-
+            </p> -->
+            <?php $Bio = $Results->fetch_assoc(); echo "<p>" . $Bio['VALUE'] . "</p>";?>
             
 
             <?php 
