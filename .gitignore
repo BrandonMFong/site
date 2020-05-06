@@ -8,3 +8,4 @@ archive/*
 VCODE_Site.code-workspace
 docs/*
 FTP.ps1
+img/*

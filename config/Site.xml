@@ -6,7 +6,7 @@
     <Header>
         <StyleSheets>css/SlideShow.css</StyleSheets>
         <StyleSheets>css/Site.css</StyleSheets>
-        <StyleSheets>css/HeroImage.css</StyleSheets>
+        <StyleSheets>css/Header.css</StyleSheets>
     </Header>
     <Scripts>
         <Script>js/SlideShow.js</Script>

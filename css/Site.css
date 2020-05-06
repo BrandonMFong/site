@@ -1,3 +1,14 @@
+body,
+html {
+    height: 100%;
+    margin: 0;
+}
+
+.Content {
+    margin: 8px;
+}
+
+
 /* Project division */
 
 .Project {

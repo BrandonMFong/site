@@ -68,7 +68,7 @@ Push-Location $PSScriptRoot;
         Write-Host $site_in_destination_folder;
         try 
         {
-            Remove-Item $site_in_destination_folder -Force -Confirm; # Just say "Yes to All"
+            Remove-Item $site_in_destination_folder -Force -Recurse; # Just say "Yes to All"
         }
         catch 
         {
@@ -159,16 +159,15 @@ Push-Location $PSScriptRoot;
                     Copy-Item $files[$k] $destination[$d];
                     Write-Host "Copied" $files[$k] " to " $destination[$d];
                 }
-                Write-Progress -Activity 'Copying Files' -Status 'Progress:' -PercentComplete $d; 
             }
+            Write-Progress -Activity 'Copying Files' -Status 'Progress:' -PercentComplete $k; 
         }
 
         Write-Progress -Activity 'Success.  Finishing final steps.';
         Write-Host "`nSuccessfully copied files`n";
         
         Write-Host "Copied Items from " $repo_name " to " $destination_dir;
-        Write-Host "`nOpening browser @ localhost in 3 seconds...";
-        Start-Sleep -s 3;
+        Write-Host "`nOpening browser @ localhost...";
 
         # Start Site
         try 
