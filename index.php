@@ -10,6 +10,10 @@
         echo "</head>";
     ?>
     <body>
+        <?php 
+            // Load Javascripts
+            foreach($XMLReader->Scripts->Script as $script){echo "<script src=\"" . $script . "\"></script>";}
+        ?>
         <div class="header">
             <div class="hero-text">
                 <?php 
@@ -50,16 +54,15 @@
                         echo "<a class=\"prev\" onclick=\"plusSlides(-1,'SlideClass" . $i . "')\">&#10094;</a>";
                         echo "<a class=\"next\" onclick=\"plusSlides(1,'SlideClass" . $i . "')\">&#10095;</a>";
                         echo "</div>";
+                        echo "<script>";
+                        echo "showSlides(1,'SlideClass" . $i . "')";
+                        echo "</script>";
                     }
                     echo "</div>";
                     $i++;
                 }
             ?>
 
-            <?php 
-                // Load Javascripts
-                foreach($XMLReader->Scripts->Script as $script){echo "<script src=\"" . $script . "\"></script>";}
-            ?>
 
             <?php 
                 echo "<footer>";
