@@ -30,4 +30,7 @@
          </xs:element>
       </xs:element>
    </xs:element>
+
+   <!-- Env config -->
+   <xs:element name="Environment"/>
 </xs:schema>
