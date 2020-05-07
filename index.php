@@ -18,6 +18,7 @@
             foreach($XMLReader->Scripts->Script as $script){echo "<script src=\"" . $script . "\"></script>";}
         ?>
         <?php
+            // Establish environment
             function GetCred(string $ConfigEnv)
             {
                 $DBCred = simplexml_load_file("config/DBCred.xml") or die("Failed to load");
@@ -74,13 +75,15 @@
         </div>
         <div class="Content">
 
-            <!-- <p>
-                Brandon Fong is born and raised in the Bay Area, Hercules California.  He went to Hercules High School and currently attending San Diego State University 
-                for his Bachelor's in Science in Computer Engineering.  He is currently employed by Kiran Analytics as an Associate Support Consultant since July 2019.
-            </p> -->
-            <?php $Bio = $Results->fetch_assoc(); echo "<p>" . $Bio['VALUE'] . "</p>";?>
+            <?php 
+                /* Bio */ 
+                echo "<div class=\"bio-container\">";
+                $Bio = $Results->fetch_assoc(); 
+                echo "<img src='img/SMTrip.jpg'/>";
+                echo "<p>" . $Bio['VALUE'] . "</p>";
+                echo "</div>";
+            ?>
             
-
             <?php 
                 // Projects
                 echo "<h2>Projects</h2>";

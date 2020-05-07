@@ -28,3 +28,29 @@ html {
     margin-top: 3px;
     margin-bottom: 3px;
 }
+
+
+/* Biography  */
+
+.bio-container {
+    margin: 10px;
+    height: 500px;
+    width: 1000px;
+}
+
+.bio-container>img {
+    float: left;
+    margin-right: 10px;
+    margin-left: 10px;
+    max-height: 500px;
+    max-width: 500px;
+    height: auto;
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
+
+.bio-container>p {
+    margin: 20px;
+    text-align: center;
+}
