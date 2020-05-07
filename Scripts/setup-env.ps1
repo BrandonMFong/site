@@ -160,7 +160,7 @@ Push-Location $PSScriptRoot;
                     Write-Host "Copied" $files[$k] " to " $destination[$d];
                 }
             }
-            Write-Progress -Activity 'Copying Files' -Status 'Progress:' -PercentComplete $k; 
+            Write-Progress -Activity 'Copying Files' -Status 'Progress:' -PercentComplete (($k/$files.Count)*100); 
         }
 
         Write-Progress -Activity 'Success.  Finishing final steps.';

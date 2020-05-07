@@ -18,9 +18,10 @@
             foreach($XMLReader->Scripts->Script as $script){echo "<script src=\"" . $script . "\"></script>";}
         ?>
         <?php
-            function GetCred($ConfigEnv)
+            function GetCred(string $ConfigEnv)
             {
                 $DBCred = simplexml_load_file("config/DBCred.xml") or die("Failed to load");
+                $DBCred->Credentials->Credential;
                 $val = 0;
                 foreach($DBCred->Credentials->Credential as $cred)
                 {
