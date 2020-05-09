@@ -34,7 +34,7 @@
         $SendOverride = true;
         if(!$Connected){Connect();}
         $sqlfile =  fopen($filepath, "r") or die("Unable to read file.");
-        if(!Query(fread($sqlfile, filesize("sql/GetBio.sql")))){return $GLOBALS['Results']->fetch_assoc();}
+        if(!Query(fread($sqlfile, filesize($filepath)))){return $GLOBALS['Results']->fetch_assoc();}
         else{return false;}
     }
 

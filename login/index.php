@@ -62,7 +62,7 @@
             {
                 if((Query("select Password as pw from siteuser where Username = '$Username'"))['pw'] == $Password)
                 {
-                    header("Location:../profile");
+                    header("Location:../dasheditor");
                     exit();
                 }
             }

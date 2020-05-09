@@ -40,9 +40,8 @@
             <?php 
                 /* Bio */ 
                 echo "<div class=\"bio-container\">";
-                $Bio = QueryByFile("sql/GetBio.sql"); 
                 echo "<img src='img/SMTrip.jpg'/>";
-                echo "<p>" . $Bio['VALUE'] . "</p>";
+                echo "<p>" . (QueryByFile("sql/GetBio.sql"))['VALUE'] . "</p>";
                 echo "</div>";
             ?>
             
