@@ -26,20 +26,12 @@
                 else 
                 {
                     $Username = test_input($_POST["Username"]);
-                    if (!preg_match("/^[a-zA-Z 0-9]*$/",$Username)) 
-                    {
-                        $UsernameErr = "Only letters and white space allowed";
-                    }
                 }
 
                 if (empty($_POST["Password"])) {$PasswordErr = "Password is required";} 
                 else 
                 {
                     $Password = test_input($_POST["Password"]);
-                    if (!preg_match("/^[a-zA-Z 0-9]*$/",$Password)) 
-                    {
-                        $PasswordErr = "Invalid Password format";
-                    }
                 }
             }
             function test_input($data) 
@@ -51,16 +43,11 @@
             }
         ?>
 
-        <h2>PHP Form Validation Example</h2>
-        <p>
-            <span class="error">* required field</span>
-        </p>
+        <h2>Login</h2>
         <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
             Username: <input type="text" name="Username" value="<?php echo $Username;?>">
-            <span class="error">* <?php echo $UsernameErr;?></span>
             <br><br>
             Password: <input type="password" name="Password" value="<?php echo $Password;?>">
-            <span class="error">* <?php echo $PasswordErr;?></span>
             <br><br>
             <input type="submit" name="login" value="Login">  
         </form>
@@ -73,7 +60,11 @@
 
             if((Query("SELECT EXISTS(select Username from siteuser where Username = '$Username') as Results;"))['Results'] == 1)
             {
-                echo "User Exists";
+                if((Query("select Password as pw from siteuser where Username = '$Username'"))['pw'] == $Password)
+                {
+                    header("Location:../profile");
+                    exit();
+                }
             }
 
         ?>
