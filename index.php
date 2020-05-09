@@ -4,7 +4,10 @@
         // Load xml
         $GLOBALS['XMLReader'] = simplexml_load_file("config/Site.xml") or die("Failed to load");
         $GLOBALS['WebConfig'] = simplexml_load_file("config/env.xml") or die("Failed to load");
-        $GLOBALS['VarXml'] = simplexml_load_file("config/credentials.xml") or die("Failed to load");
+        $GLOBALS['CredConfig'] = simplexml_load_file("config/credentials.xml") or die("Failed to load");
+
+        include 'function/database.php';
+
         echo "<head>";
         echo "<title>" . $GLOBALS['XMLReader']->SiteTitle . "</title>";
         echo "<meta charset=\"UTF-8\">";
@@ -16,52 +19,6 @@
         <?php 
             // Load Javascripts
             foreach($GLOBALS['XMLReader']->Scripts->Script as $script){echo "<script src=\"" . $script . "\"></script>";}
-        ?>
-        <?php
-            // Establish environment
-            function GetCred(string $ConfigEnv)
-            {
-                $val = 0;
-                foreach($GLOBALS['VarXml']->Credentials->Credential as $cred)
-                {
-                    if($ConfigEnv == $cred['Environment']){$val = $cred;}
-                }
-                return $val;
-            }
-
-            if($GLOBALS['WebConfig']->Environment == "Local")
-            {
-                $x = GetCred($GLOBALS['WebConfig']->Environment);
-
-                $servername = $x->Servername;
-                $username = $x->Username;
-                $password = $x->Password;
-                $dbname = $x->Database;
-            }
-            elseif($GLOBALS['WebConfig']->Environment == "Server")
-            {
-                $x = GetCred($GLOBALS['WebConfig']->Environment);
-
-                $servername = $x->Servername;
-                $username = $x->Username;
-                $password = $x->Password;
-                $dbname = $x->Database;
-            }
-            else
-            {
-                print("Config error");
-            }
-
-            // Create connection
-            $conn = new mysqli($servername, $username, $password, $dbname);
-            // Check connection
-            if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);}
-
-            $sqlfile =  fopen("sql/GetBio.sql", "r") or die("Unable to read file.");
-            $Results = $conn->query(fread($sqlfile, filesize("sql/GetBio.sql")));
-
-            if ($Results->num_rows == 0) {echo "0 results";}
-            $conn->close();
         ?>
         <div class="header">
             <div class="hero-text">
@@ -76,7 +33,7 @@
             <?php 
                 /* Bio */ 
                 echo "<div class=\"bio-container\">";
-                $Bio = $Results->fetch_assoc(); 
+                $Bio = QueryByFile("sql/GetBio.sql"); 
                 echo "<img src='img/SMTrip.jpg'/>";
                 echo "<p>" . $Bio['VALUE'] . "</p>";
                 echo "</div>";
