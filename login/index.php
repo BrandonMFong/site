@@ -1,3 +1,10 @@
+<?php 
+    session_start();
+    
+    $GLOBALS['XMLReader'] = simplexml_load_string($_SESSION['XMLReader']);
+    $GLOBALS['CredConfig'] = simplexml_load_string($_SESSION['CredConfig']);
+    $GLOBALS['WebConfig'] = simplexml_load_string($_SESSION['WebConfig']);
+?>
 <!DOCTYPE HTML>  
 <!-- https://tryphp.w3schools.com/showphp.php?filename=demo_form_validation_complete -->
 <html>
@@ -9,6 +16,7 @@
     <body>  
 
         <?php
+            include '../function/database.php'; 
             // define variables and set to empty values
             $UsernameErr = $PasswordErr = $Username = $Password = "";
 
@@ -51,7 +59,7 @@
             Username: <input type="text" name="Username" value="<?php echo $Username;?>">
             <span class="error">* <?php echo $UsernameErr;?></span>
             <br><br>
-            Password: <input type="text" name="Password" value="<?php echo $Password;?>">
+            Password: <input type="password" name="Password" value="<?php echo $Password;?>">
             <span class="error">* <?php echo $PasswordErr;?></span>
             <br><br>
             <input type="submit" name="login" value="Login">  
@@ -62,6 +70,13 @@
             echo $Username;
             echo "<br>";
             echo $Password;
+
+            if(Query("SELECT EXISTS(select username from siteuser where Username = '$Username');"))
+            {
+                echo "User Exists";
+            }
+            else{echo "User does not exist";}
+
         ?>
 
     </body>

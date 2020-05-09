@@ -10,4 +10,4 @@ docs/*
 FTP.ps1
 img/*
 config/env.xml
-config/credentials.xml
+config/environmentcredentials.xml

@@ -1,10 +1,17 @@
-﻿<!DOCTYPE html>
+﻿<?php 
+    session_start();
+    
+    // Load xml
+    $_SESSION['XMLReader'] = file_get_contents("config/Site.xml") or die("Failed to load");
+    $_SESSION['CredConfig'] = file_get_contents("config/environmentcredentials.xml") or die("Failed to load");
+    $_SESSION['WebConfig'] = file_get_contents("config/env.xml") or die("Failed to load");
+    $GLOBALS['XMLReader'] = simplexml_load_string($_SESSION['XMLReader']);
+    $GLOBALS['CredConfig'] = simplexml_load_string($_SESSION['CredConfig']);
+    $GLOBALS['WebConfig'] = simplexml_load_string($_SESSION['WebConfig']);
+?>
+<!DOCTYPE html>
 <html lang="en">
     <?php 
-        // Load xml
-        $GLOBALS['XMLReader'] = simplexml_load_file("config/Site.xml") or die("Failed to load");
-        $GLOBALS['WebConfig'] = simplexml_load_file("config/env.xml") or die("Failed to load");
-        $GLOBALS['CredConfig'] = simplexml_load_file("config/credentials.xml") or die("Failed to load");
 
         include 'function/database.php';
 

@@ -1,16 +1,12 @@
 <?php
+    include("variables.php");
     global $Connected, $SendOverride;
     $Connected = false;
     $SendOverride = false;
-    function GetCorrectEnvironment(string $ConfigEnv)
-    {
-        $val = 0;
-        foreach($GLOBALS['CredConfig']->Credentials->Credential as $cred)
-        {
-            if($ConfigEnv == $cred['Environment']){$val = $cred;}
-        }
-        return $val;
-    }
+    
+    $GLOBALS['XMLReader'] = simplexml_load_string($_SESSION['XMLReader']);
+    $GLOBALS['CredConfig'] = simplexml_load_string($_SESSION['CredConfig']);
+    $GLOBALS['WebConfig'] = simplexml_load_string($_SESSION['WebConfig']);
 
     function GetVariables()
     {
