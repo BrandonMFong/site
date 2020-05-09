@@ -44,9 +44,6 @@ catch
 }
 ############################## I M P O R T A N T ############################################
 
-Write-Warning "It's going to ask if you want to overwrite the current: "; $site_in_destination_folder;
-Write-Warning "Just say yes to all of if you are okay with it.";
-
 Push-Location $PSScriptRoot; 
 
     if(!(Test-Path $destination_parent_dir))
@@ -157,7 +154,7 @@ Push-Location $PSScriptRoot;
                 if($files_base_dir[$k] -eq $base_directory[$d]) 
                 {
                     Copy-Item $files[$k] $destination[$d];
-                    Write-Host "Copied" $files[$k] " to " $destination[$d];
+                    Write-Host "Copied" $files[$k] " => " $destination[$d];
                 }
             }
             Write-Progress -Activity 'Copying Files' -Status 'Progress:' -PercentComplete (($k/$files.Count)*100); 

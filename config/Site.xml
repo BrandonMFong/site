@@ -4,12 +4,12 @@
     xsi:schemaLocation="..\schema\Site.xsd">
     <SiteTitle>Brandon Fong</SiteTitle>
     <Header>
-        <StyleSheets>css/SlideShow.css</StyleSheets>
-        <StyleSheets>css/Site.css</StyleSheets>
-        <StyleSheets>css/Header.css</StyleSheets>
+        <StyleSheets>css/slideshow.css</StyleSheets>
+        <StyleSheets>css/site.css</StyleSheets>
+        <StyleSheets>css/header.css</StyleSheets>
     </Header>
     <Scripts>
-        <Script>js/SlideShow.js</Script>
+        <Script>js/slideshow.js</Script>
     </Scripts>
     <Footer>
         <Copyright>@year Brandon Fong All Rights Reserved</Copyright>

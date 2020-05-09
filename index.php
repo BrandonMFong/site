@@ -2,47 +2,45 @@
 <html lang="en">
     <?php 
         // Load xml
-        global $XMLReader, $WebConfig;
-        $XMLReader = simplexml_load_file("config/Site.xml") or die("Failed to load");
-        $WebConfig = simplexml_load_file("config/env.xml") or die("Failed to load");
+        $GLOBALS['XMLReader'] = simplexml_load_file("config/Site.xml") or die("Failed to load");
+        $GLOBALS['WebConfig'] = simplexml_load_file("config/env.xml") or die("Failed to load");
+        $GLOBALS['VarXml'] = simplexml_load_file("config/credentials.xml") or die("Failed to load");
         echo "<head>";
-        echo "<title>" . $XMLReader->SiteTitle . "</title>";
+        echo "<title>" . $GLOBALS['XMLReader']->SiteTitle . "</title>";
         echo "<meta charset=\"UTF-8\">";
         // Load CSS
-        foreach($XMLReader->Header->StyleSheets as $ref){echo "<link rel=\"stylesheet\" href=\"" . $ref . "\">";}
+        foreach($GLOBALS['XMLReader']->Header->StyleSheets as $ref){echo "<link rel=\"stylesheet\" href=\"" . $ref . "\">";}
         echo "</head>";
     ?>
     <body>
         <?php 
             // Load Javascripts
-            foreach($XMLReader->Scripts->Script as $script){echo "<script src=\"" . $script . "\"></script>";}
+            foreach($GLOBALS['XMLReader']->Scripts->Script as $script){echo "<script src=\"" . $script . "\"></script>";}
         ?>
         <?php
             // Establish environment
             function GetCred(string $ConfigEnv)
             {
-                $DBCred = simplexml_load_file("config/DBCred.xml") or die("Failed to load");
-                $DBCred->Credentials->Credential;
                 $val = 0;
-                foreach($DBCred->Credentials->Credential as $cred)
+                foreach($GLOBALS['VarXml']->Credentials->Credential as $cred)
                 {
                     if($ConfigEnv == $cred['Environment']){$val = $cred;}
                 }
                 return $val;
             }
 
-            if($WebConfig->Environment == "Local")
+            if($GLOBALS['WebConfig']->Environment == "Local")
             {
-                $x = GetCred($WebConfig->Environment);
+                $x = GetCred($GLOBALS['WebConfig']->Environment);
 
                 $servername = $x->Servername;
                 $username = $x->Username;
                 $password = $x->Password;
                 $dbname = $x->Database;
             }
-            elseif($WebConfig->Environment == "Server")
+            elseif($GLOBALS['WebConfig']->Environment == "Server")
             {
-                $x = GetCred($WebConfig->Environment);
+                $x = GetCred($GLOBALS['WebConfig']->Environment);
 
                 $servername = $x->Servername;
                 $username = $x->Username;
@@ -69,7 +67,7 @@
             <div class="hero-text">
                 <?php 
                     // Button Links
-                    foreach($XMLReader->Links->Link as $link){echo "<a href=\"" . $link->URL . "\" class=\"button\">" . $link->Name . "</a> ";}
+                    foreach($GLOBALS['XMLReader']->Links->Link as $link){echo "<a href=\"" . $link->URL . "\" class=\"button\">" . $link->Name . "</a> ";}
                 ?>
             </div>
         </div>
@@ -88,7 +86,7 @@
                 // Projects
                 echo "<h2>Projects</h2>";
                 $i = 1;
-                foreach($XMLReader->Projects->Project as $Project)
+                foreach($GLOBALS['XMLReader']->Projects->Project as $Project)
                 {
                     echo "<div class=\"Project\">";
                     echo "<div class=\"Project-Title\">" . $Project['Topic'] . "</div>";
@@ -119,8 +117,9 @@
 
             <?php 
                 echo "<footer>";
-                echo "<p>© " .  str_replace("@year", date("Y"), $XMLReader->Footer->Copyright) . "</p>";
+                echo "<p>© " .  str_replace("@year", date("Y"), $GLOBALS['XMLReader']->Footer->Copyright) . "</p>";
                 echo "<p><a href=\"https://github.com/BrandonMFong/Site\">Open Source</a></p>";
+                echo "<p><a href=\"login\">Login</a></p>";
                 echo "</footer>";
             ?>
         </div>
