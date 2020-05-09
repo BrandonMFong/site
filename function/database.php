@@ -3,7 +3,7 @@
     global $Connected, $SendOverride;
     $Connected = false;
     $SendOverride = false;
-    
+
     $GLOBALS['XMLReader'] = simplexml_load_string($_SESSION['XMLReader']);
     $GLOBALS['CredConfig'] = simplexml_load_string($_SESSION['CredConfig']);
     $GLOBALS['WebConfig'] = simplexml_load_string($_SESSION['WebConfig']);
@@ -35,7 +35,7 @@
         if(!$Connected){Connect();}
         $sqlfile =  fopen($filepath, "r") or die("Unable to read file.");
         if(!Query(fread($sqlfile, filesize("sql/GetBio.sql")))){return $GLOBALS['Results']->fetch_assoc();}
-        else{return 0;}
+        else{return false;}
     }
 
     function Query(string $querystring)
@@ -46,6 +46,6 @@
         if ($GLOBALS['Results']->num_rows == 0) {echo "0 results";}
         Close();
         if(!$SendOverride){return $GLOBALS['Results']->fetch_assoc();}
-        else{return 0;}
+        else{return false;}
     }
 ?>

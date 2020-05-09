@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    
+
     $GLOBALS['XMLReader'] = simplexml_load_string($_SESSION['XMLReader']);
     $GLOBALS['CredConfig'] = simplexml_load_string($_SESSION['CredConfig']);
     $GLOBALS['WebConfig'] = simplexml_load_string($_SESSION['WebConfig']);
@@ -26,7 +26,7 @@
                 else 
                 {
                     $Username = test_input($_POST["Username"]);
-                    if (!preg_match("/^[a-zA-Z ]*$/",$Username)) 
+                    if (!preg_match("/^[a-zA-Z 0-9]*$/",$Username)) 
                     {
                         $UsernameErr = "Only letters and white space allowed";
                     }
@@ -36,7 +36,7 @@
                 else 
                 {
                     $Password = test_input($_POST["Password"]);
-                    if (!preg_match("/^[a-zA-Z ]*$/",$Password)) 
+                    if (!preg_match("/^[a-zA-Z 0-9]*$/",$Password)) 
                     {
                         $PasswordErr = "Invalid Password format";
                     }
@@ -71,11 +71,10 @@
             echo "<br>";
             echo $Password;
 
-            if(Query("SELECT EXISTS(select username from siteuser where Username = '$Username');"))
+            if((Query("SELECT EXISTS(select Username from siteuser where Username = '$Username') as Results;"))['Results'] == 1)
             {
                 echo "User Exists";
             }
-            else{echo "User does not exist";}
 
         ?>
 
