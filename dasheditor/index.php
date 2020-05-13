@@ -13,6 +13,7 @@
         </style>
     </head>
     <body>  
+        <script src="../js/getcredential.js"></script>
 
         <?php
             include '../function/database.php'; 
@@ -32,11 +33,10 @@
             }
         ?>
         <!-- TODO insert into database when form submitted -->
-        <form method="post" onSubmit="JavaScript:GetCredential(<?php $bio ?>)" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
+        <form method="post" onSubmit="GetCredential(<?php $bio; ?>)" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
             Bio: <textarea name="bio" rows="10" cols="100"><?php echo $bio;?></textarea>
             <br><br>
             <input type="submit" name="submit" value="Submit">
         </form>
-        <script src="../js/getcredential.js"></script>
     </body>
 </html>

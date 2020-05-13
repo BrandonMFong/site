@@ -14,7 +14,7 @@
             include '../function/database.php'; 
             $bio = intval($_GET['bio']);
             $bioguid = $GLOBALS['XMLReader']->BioGuid;
-            Query("update sitecontent set Value = $bio where guid = $bioguid");
+            Query("update sitecontent set Value = '$bio' where guid = $bioguid");
         ?>
     </body>
 </html>
