@@ -17,7 +17,6 @@
 
         <?php
             include '../function/database.php'; 
-            // define variables and set to empty values
             $UsernameErr = $PasswordErr = $Username = $Password = "";
 
             if ($_SERVER["REQUEST_METHOD"] == "POST") 

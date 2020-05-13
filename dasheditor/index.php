@@ -16,11 +16,11 @@
 
         <?php
             include '../function/database.php'; 
-            $comment =  (QueryByFile("../sql/GetBio.sql"))['VALUE'];
+            $bio =  (QueryByFile("../sql/GetBio.sql"))['VALUE'];
 
             if ($_SERVER["REQUEST_METHOD"] == "POST") 
             {
-                $comment = test_input($_POST["comment"]);
+                $bio = test_input($_POST["bio"]);
             }
 
             function test_input($data) 
@@ -32,10 +32,11 @@
             }
         ?>
         <!-- TODO insert into database when form submitted -->
-        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
-            Comment: <textarea name="comment" rows="10" cols="100"><?php echo $comment;?></textarea>
+        <form method="post" onSubmit="JavaScript:GetCredential(<?php $bio ?>)" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
+            Bio: <textarea name="bio" rows="10" cols="100"><?php echo $bio;?></textarea>
             <br><br>
-            <input type="submit" name="submit" value="Submit">  
+            <input type="submit" name="submit" value="Submit">
         </form>
+        <script src="../js/getcredential.js"></script>
     </body>
 </html>
