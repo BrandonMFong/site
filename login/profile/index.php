@@ -6,22 +6,26 @@
     $GLOBALS['WebConfig'] = simplexml_load_string($_SESSION['WebConfig']);
 ?>
 <!DOCTYPE HTML>  
-<?php
-if($_SESSION['LoginBool'])
-{
-    include '../../function/database.php'; 
-    $Bio = (QueryByFile("../../sql/GetBio.sql"))['VALUE'];
-    echo 
-    "
-        <html>
-            <body>
-                <form action=\"UpdateBio.php\">
-                    <textarea rows=\"4\" cols=\"50\">$Bio</textarea>
-                    <input type=\"submit\">
-                </form>
-            </body>
-        </html>
-    ";
-}
-else{echo "Not allowed";}
-?>
+<html>
+    <?php
+    if(!isset($_SESSION['LoginBool'])){throw "Not allowed!";}
+    else
+    {
+        if($_SESSION['LoginBool'])
+        {
+            include '../../function/database.php'; 
+            $Bio = (QueryByFile("../../sql/GetBio.sql"))['VALUE'];
+            echo 
+            "
+                <body>
+                    <form action=\"UpdateBio.php\" method=\"post\">
+                        <textarea name=\"BioPost\" rows=\"4\" cols=\"50\">$Bio</textarea>
+                        <input type=\"submit\" name=\"Update\">
+                    </form>
+                </body>
+            ";
+            // echo $Bio;
+        }
+    }
+    ?>
+</html>
