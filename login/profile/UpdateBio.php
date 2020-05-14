@@ -8,6 +8,6 @@
     
     $UpdatedBio = $_POST['BioPost'];
     $querystring = "update sitecontent set value = '$UpdatedBio' where id = (select id from sitecontent where guid = 'c546c208-8f5b-11ea-9c0c-8c1645f97121');";
-    Query($querystring);
+    UpdateQuery($querystring);
     header("Location:./");
 ?>

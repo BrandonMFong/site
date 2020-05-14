@@ -48,4 +48,12 @@
         if(!$SendOverride){return $GLOBALS['Results']->fetch_assoc();}
         else{return false;}
     }
+
+    function UpdateQuery(string $querystring)
+    {
+        global $Connected, $SendOverride;
+        if(!$Connected){Connect();}
+        $GLOBALS['conn']->query($querystring);
+        Close();
+    }
 ?>
