@@ -15,10 +15,20 @@
     </head>
     <body>  
 
+        <h2>Login</h2>
+        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
+            Username: <input type="text" name="Username" value="<?php echo $Username;?>">
+            <br><br>
+            Password: <input type="password" name="Password" value="<?php echo $Password;?>">
+            <br><br>
+            <input type="submit" name="login" value="Login">  
+        </form>
+
         <?php
             include '../function/database.php'; 
-            $UsernameErr = $PasswordErr = $Username = $Password = "";
 
+            // Validates input
+            $UsernameErr = $PasswordErr = $Username = $Password = "";
             if ($_SERVER["REQUEST_METHOD"] == "POST") 
             {
                 if (empty($_POST["Username"])) {$nameErr = "Name is required";} 
@@ -40,23 +50,8 @@
                 $data = htmlspecialchars($data);
                 return $data;
             }
-        ?>
 
-        <h2>Login</h2>
-        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
-            Username: <input type="text" name="Username" value="<?php echo $Username;?>">
-            <br><br>
-            Password: <input type="password" name="Password" value="<?php echo $Password;?>">
-            <br><br>
-            <input type="submit" name="login" value="Login">  
-        </form>
-
-        <?php
-            echo "<h2>Your Input:</h2>";
-            echo $Username;
-            echo "<br>";
-            echo $Password;
-
+            // Checks if credentials are correct
             if((Query("SELECT EXISTS(select Username from siteuser where Username = '$Username') as Results;"))['Results'] == 1)
             {
                 if((Query("select Password as pw from siteuser where Username = '$Username'"))['pw'] == $Password)
