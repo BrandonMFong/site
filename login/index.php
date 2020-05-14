@@ -61,7 +61,8 @@
             {
                 if((Query("select Password as pw from siteuser where Username = '$Username'"))['pw'] == $Password)
                 {
-                    header("Location:../dasheditor");
+                    header("Location:profile");
+                    $_SESSION['LoginBool'] = true;
                     exit();
                 }
             }
