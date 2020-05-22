@@ -12,7 +12,6 @@
 <!DOCTYPE html>
 <html lang="en">
     <?php 
-
         include 'function/database.php';
 
         echo "<head>";
@@ -82,7 +81,6 @@
                 echo "<footer>";
                 echo "<p>© " .  str_replace("@year", date("Y"), $GLOBALS['XMLReader']->Footer->Copyright) . "</p>";
                 echo "<p><a href=\"https://github.com/BrandonMFong/Site\">Open Source</a></p>";
-                echo "<p><a href=\"login\">Login</a></p>";
                 echo "</footer>";
             ?>
         </div>

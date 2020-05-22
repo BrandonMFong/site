@@ -1,20 +1,12 @@
-<?php 
-    session_start();
-
-    $GLOBALS['XMLReader'] = simplexml_load_string($_SESSION['XMLReader-String']);
-    $GLOBALS['CredConfig'] = simplexml_load_string($_SESSION['CredConfig-String']);
-    $GLOBALS['WebConfig'] = simplexml_load_string($_SESSION['WebConfig-String']);
-?>
+<?php session_start(); ?>
 <!DOCTYPE HTML>  
 <!-- https://tryphp.w3schools.com/showphp.php?filename=demo_form_validation_complete -->
 <html>
     <head>
-        <style>
-            .error {color: #FF0000;}
-        </style>
+        <style>.error {color: #FF0000;}</style>
     </head>
     <body>  
-        <?php $Username = $Password = ""; ?>
+        <?php $UsernameErr = $PasswordErr = $Username = $Password = ""; ?>
         <h2>Login</h2>
         <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
             Username: <input type="text" name="Username" value="<?php echo $Username;?>">
@@ -27,8 +19,6 @@
         <?php
             include '../function/database.php'; 
 
-            // Validates input
-            $UsernameErr = $PasswordErr = $Username = $Password = "";
             if ($_SERVER["REQUEST_METHOD"] == "POST") 
             {
                 if (empty($_POST["Username"])) {$nameErr = "Name is required";} 
@@ -61,8 +51,6 @@
                     exit();
                 }
             }
-
         ?>
-
     </body>
 </html>

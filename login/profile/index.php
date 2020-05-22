@@ -1,10 +1,4 @@
-<?php 
-    session_start();
-
-    $GLOBALS['XMLReader'] = simplexml_load_string($_SESSION['XMLReader-String']);
-    $GLOBALS['CredConfig'] = simplexml_load_string($_SESSION['CredConfig-String']);
-    $GLOBALS['WebConfig'] = simplexml_load_string($_SESSION['WebConfig-String']);
-?>
+<?php session_start(); ?>
 <!DOCTYPE HTML>  
 <html>
     <?php
@@ -20,7 +14,7 @@
             "
                 <body>
                     <form action=\"UpdateBio.php\" method=\"post\">
-                        <textarea name=\"BioPost\" rows=\"4\" cols=\"50\">$Bio</textarea>
+                        <textarea name=\"BioPost\" rows=\"20\" cols=\"100\">$Bio</textarea>
                         <input type=\"submit\" name=\"Update\">
                     </form>
                 </body>
