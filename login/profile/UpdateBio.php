@@ -1,9 +1,9 @@
 <?php 
     session_start();
 
-    $GLOBALS['XMLReader'] = simplexml_load_string($_SESSION['XMLReader']);
-    $GLOBALS['CredConfig'] = simplexml_load_string($_SESSION['CredConfig']);
-    $GLOBALS['WebConfig'] = simplexml_load_string($_SESSION['WebConfig']);
+    $GLOBALS['XMLReader'] = simplexml_load_string($_SESSION['XMLReader-String']);
+    $GLOBALS['CredConfig'] = simplexml_load_string($_SESSION['CredConfig-String']);
+    $GLOBALS['WebConfig'] = simplexml_load_string($_SESSION['WebConfig-String']);
     include '../../function/database.php'; 
     
     $UpdatedBio = $_POST['BioPost']; // Gets value from post then updates the database value

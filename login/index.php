@@ -1,9 +1,9 @@
 <?php 
     session_start();
 
-    $GLOBALS['XMLReader'] = simplexml_load_string($_SESSION['XMLReader']);
-    $GLOBALS['CredConfig'] = simplexml_load_string($_SESSION['CredConfig']);
-    $GLOBALS['WebConfig'] = simplexml_load_string($_SESSION['WebConfig']);
+    $GLOBALS['XMLReader'] = simplexml_load_string($_SESSION['XMLReader-String']);
+    $GLOBALS['CredConfig'] = simplexml_load_string($_SESSION['CredConfig-String']);
+    $GLOBALS['WebConfig'] = simplexml_load_string($_SESSION['WebConfig-String']);
 ?>
 <!DOCTYPE HTML>  
 <!-- https://tryphp.w3schools.com/showphp.php?filename=demo_form_validation_complete -->
@@ -14,7 +14,7 @@
         </style>
     </head>
     <body>  
-
+        <?php $Username = $Password = ""; ?>
         <h2>Login</h2>
         <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
             Username: <input type="text" name="Username" value="<?php echo $Username;?>">
