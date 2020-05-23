@@ -8,6 +8,7 @@ if($Default)
   {
     if($dest.Name -eq "Default")
     {
+      Write-Host "`nTransferring to $($dest.Site)`n" -ForegroundColor Yellow;
       [System.Object[]]$Processes = $dest.Processes;
       foreach($item in $Processes.Process)
       {
@@ -30,6 +31,7 @@ if($dev)
   {
     if($dest.Name -eq "dev")
     {
+      Write-Host "`nTransferring to $($dest.Site)`n" -ForegroundColor Yellow;
       [System.Object[]]$Processes = $dest.Processes;
       foreach($item in $Processes.Process)
       {

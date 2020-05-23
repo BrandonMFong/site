@@ -3,6 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
     xsi:schemaLocation="..\schema\Site.xsd">
     <Destination Name="Default">
+        <Site>brandonmfong.com</Site>
         <Processes><!-- Not specifying if it is put or get -->
             <Process>
                 <Tag>Images</Tag>
@@ -37,6 +38,7 @@
         </Processes>
     </Destination>
     <Destination Name="dev">
+        <Site>dev.brandonmfong.com</Site>
         <Processes><!-- Not specifying if it is put or get -->
             <Process>
                 <Tag>Images</Tag>

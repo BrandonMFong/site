@@ -36,12 +36,16 @@
    <xs:element name="Environment"/>
 
    <!-- FTP -->
-   <xs:element name="Items">
-      <xs:element name="Item">
-         <xs:element name="Tag"/>
-         <xs:element name="LCD"/>
-         <xs:element name="CD"/>
-         <xs:element name="Package"/>
+   <xs:element name="Destination">
+      <xs:attribute name="Name"/>
+      <xs:element name="Site"/>
+      <xs:element name="Processes">
+         <xs:element name="Process">
+            <xs:element name="Tag"/>
+            <xs:element name="LCD"/>
+            <xs:element name="CD"/>
+            <xs:element name="Package"/>
+         </xs:element>
       </xs:element>
    </xs:element>
 
