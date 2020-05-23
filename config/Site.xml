@@ -2,7 +2,7 @@
 <Site 
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
     xsi:schemaLocation="..\schema\Site.xsd">
-    <IsUnderMaintenance>True</IsUnderMaintenance>
+    <IsUnderMaintenance>False</IsUnderMaintenance>
     <SiteTitle>Brandon Fong</SiteTitle>
     <Header>
         <StyleSheets>css/SlideShow.css</StyleSheets>
