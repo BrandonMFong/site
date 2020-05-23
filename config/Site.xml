@@ -5,12 +5,12 @@
     <IsUnderMaintenance>False</IsUnderMaintenance>
     <SiteTitle>Brandon Fong</SiteTitle>
     <Header>
-        <StyleSheets>css/slideshow.css</StyleSheets>
-        <StyleSheets>css/site.css</StyleSheets>
-        <StyleSheets>css/header.css</StyleSheets>
+        <StyleSheets>css/SlideShow.css</StyleSheets>
+        <StyleSheets>css/Site.css</StyleSheets>
+        <StyleSheets>css/Header.css</StyleSheets>
     </Header>
     <Scripts>
-        <Script>js/slideshow.js</Script>
+        <Script>js/SlideShow.js</Script>
     </Scripts>
     <Footer>
         <Copyright>@year Brandon Fong All Rights Reserved</Copyright>
