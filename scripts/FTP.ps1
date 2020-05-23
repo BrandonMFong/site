@@ -1,4 +1,4 @@
-param([switch]$Default,[switch]$sandbox)
+param([switch]$Default,[switch]$dev)
 $creds = Get-Content $PSScriptRoot\..\config\ssh.json|Out-String|ConvertFrom-Json
 [XML]$FTPItems = Get-Content $PSScriptRoot\..\config\Transfer.xml
 
@@ -24,11 +24,11 @@ if($Default)
     }
   }
 }
-if($sandbox)
+if($dev)
 {
   foreach($dest in $FTPItems.Site.Destination)
   {
-    if($dest.Name -eq "sandbox")
+    if($dest.Name -eq "dev")
     {
       [System.Object[]]$Processes = $dest.Processes;
       foreach($item in $Processes.Process)
