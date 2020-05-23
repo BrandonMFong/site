@@ -1,0 +1,16 @@
+{
+    "Destination": "C:\\xampp\\htdocs\\",
+    "Source": "B:\\SOURCES\\Repos\\site",
+    "SiteName": "brandonmfong.com",
+    "DefaultBrowserPath": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+    "URL": "Localhost",
+    "Exclude": [
+        ".git",
+        ".vscode",
+        ".well-known",
+        "archive",
+        ".gitignore",
+        "VCODE_Site.code-workspace",
+        ".DS_Store"
+    ]
+}
