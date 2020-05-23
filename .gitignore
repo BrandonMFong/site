@@ -11,3 +11,4 @@ img/*
 config/env.xml
 config/environmentcredentials.xml
 config/ssh.json
+subdomains/*
