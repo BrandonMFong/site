@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Site 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="..\schema\Site.xsd">
+    <Items><!-- Not specifying if it is put or get -->
+        <Item>
+            <Tag>Images</Tag>
+            <LCD>B:\SOURCES\Repos\Site</LCD>
+            <CD>/home/u820870703/domains/brandonmfong.com/public_html</CD>
+            <Package>img</Package>
+        </Item>
+        <Item>
+            <Tag>Documents</Tag>
+            <LCD>B:\SOURCES\Repos\Site</LCD>
+            <CD>/home/u820870703/domains/brandonmfong.com/public_html</CD>
+            <Package>docs</Package>
+        </Item>
+        <Item>
+            <Tag>Configuration - Credentials</Tag>
+            <LCD>B:\SOURCES\Repos\Site\config</LCD>
+            <CD>/home/u820870703/domains/brandonmfong.com/public_html/config</CD>
+            <Package>environmentcredentials.xml</Package>
+        </Item>
+        <!-- <Item>
+            <Tag>Configuration - Environment identifier</Tag>
+            <LCD>B:\SOURCES\Repos\Site\config</LCD>
+            <CD>/home/u820870703/domains/brandonmfong.com/public_html/config</CD>
+            <Package>env.xml</Package>
+        </Item> -->
+    </Items>
+</Site>
