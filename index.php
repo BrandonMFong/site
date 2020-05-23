@@ -22,7 +22,9 @@
 
         echo "<head>";
         echo "<title>" . $GLOBALS['XMLReader']->SiteTitle . "</title>";
-        echo "<meta charset=\"UTF-8\">";
+        // echo "<meta charset=\"UTF-8\">";
+        echo "<meta http-equiv=\"Content-Type\" content=\"text/html\; charset=UTF-8\" />";
+        echo "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=9\" />";
         // Load CSS
         foreach($GLOBALS['XMLReader']->Header->StyleSheets as $ref){echo "<link rel=\"stylesheet\" href=\"" . $ref . "\">";}
         echo "</head>";
