@@ -1,7 +1,7 @@
 logs/*
 .vscode/*
 .well-known/*
-SSH/*
+ssh/*
 .DS_Store
 init/
 archive/*
@@ -11,3 +11,4 @@ FTP.ps1
 img/*
 config/env.xml
 config/environmentcredentials.xml
+config/ssh.json
