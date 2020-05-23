@@ -8,6 +8,12 @@
     $GLOBALS['XMLReader'] = simplexml_load_string($_SESSION['XMLReader-String']);
     $GLOBALS['CredConfig'] = simplexml_load_string($_SESSION['CredConfig-String']);
     $GLOBALS['WebConfig'] = simplexml_load_string($_SESSION['WebConfig-String']);
+
+    if($GLOBALS['XMLReader']->IsUnderMaintenance == 'True')
+    {
+        header("Location:views/Maintenance.html");
+        exit();
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">

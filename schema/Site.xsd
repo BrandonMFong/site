@@ -1,6 +1,7 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <xs:schema xmlns:xs = "http://www.w3.org/2001/XMLSchema">
    <xs:element name="Site">
+      <xs:element name="IsUnderMaintenance" type="xs:string"/>
       <xs:element name="SiteTitle" type="xs:string"/>
       <!-- Contains all header elements -->
       <xs:element name="Header">
