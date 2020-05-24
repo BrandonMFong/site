@@ -13,6 +13,7 @@ Software:
 * [Xampp](https://www.apachefriends.org/index.html) - To run the site on your localhost
 * [Putty](https://www.putty.org/) - SSH access
 * [WinSCP](https://winscp.net/eng/download.php) - FTP
+* [PowerShell](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-7) - To run scripts
 
 ### Installing
 
@@ -52,6 +53,8 @@ environmentcredentials.xml:
     </Variables>
 </Site>
 ```
+
+After you have these required xml, you must run Open-Putty.ps1 in powershell.
 
 ## Deployment
 
