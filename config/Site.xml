@@ -30,6 +30,19 @@
     </Links>
     <BioGuid>c546c208-8f5b-11ea-9c0c-8c1645f97121</BioGuid>
     <Projects>
+        <Project Topic="GlobalScripts">
+            <Description>
+                GlobalScripts is a personal powershell project.  When using powershell, the GlobalScript code defines framework in powershell that can be used 
+                throughout the powershell session time. 
+                &lt;br&gt;&lt;br&gt;
+                The code uses PowerShell, SQL Server, and XML.  Powershell for the obvious reasons.  SQL Server for private data that should not be shared.  XML is to define the 
+                specific environment the code is running on (i.e. different computers and the directories on them).
+            </Description>
+            <SlideShow>
+                <ImageFile>img/GlobalScripts/Dashboard.PNG</ImageFile>
+                <ImageFile>img/GlobalScripts/Dashboard2.PNG</ImageFile>
+            </SlideShow>
+        </Project>
         <Project Topic="Dual Power Generation">
             <Description>
                 Dual Power Generation is a Senior Design Project.  Our goal was to turn Solar and Wind into energy.  The group consisted of Electrical and Computer Engineers.  
@@ -44,19 +57,6 @@
                 <ImageFile>img/DualPower/OverallDiagram.PNG</ImageFile>
             </SlideShow>
         </Project>
-        <Project Topic="GlobalScripts">
-            <Description>
-                GlobalScripts is a personal powershell project.  When using powershell, the GlobalScript code defines framework in powershell that can be used 
-                throughout the powershell session time. 
-                &lt;br&gt;&lt;br&gt;
-                The code uses PowerShell, SQL Server, and XML.  Powershell for the obvious reasons.  SQL Server for private data that should not be shared.  XML is to define the 
-                specific environment the code is running on (i.e. different computers and the directories on them).
-            </Description>
-            <SlideShow>
-                <ImageFile>img/GlobalScripts/Dashboard.PNG</ImageFile>
-                <ImageFile>img/GlobalScripts/Dashboard2.PNG</ImageFile>
-            </SlideShow>
-        </Project>
         <Project Topic="Sentry2.0">
             <Description>
                 Sentry2.0 was designed to set an alarm off when a key is pressed on my computer or when my mouse moved.
@@ -66,6 +66,18 @@
             <Description>
                 This site is actually a personal project of mine.  Programmed in PHP, this site will serve as a portfolio and supplement to my current resume.
             </Description>
+        </Project>
+        <Project Topic="Roloflex">
+            <Description>
+                Being the old fashion person I am, I grab my inspiration from the Rolodex.
+                &lt;br&gt;
+                I found that I do not have all my personal information available as easy on some devices.  I do not carry my personal passwords with  me on my phone.  
+                Using a Raspberry Pi as my Apache server, Roloflex is similar to this site but for the purpose to host my access to my information, which is stored 
+                in a database on the Pi. 
+            </Description>
+            <SlideShow>
+                <ImageFile>img/Roloflex/Homepage.PNG</ImageFile>
+            </SlideShow>
         </Project>
     </Projects>
 </Site>
