@@ -22,13 +22,11 @@
 
         echo "<head>";
         echo "<title>" . $GLOBALS['XMLReader']->SiteTitle . "</title>";
-        // echo "<meta charset=\"UTF-8\">";
         echo "<meta http-equiv=\"Content-Type\" content=\"text/html\; charset=UTF-8\" />";
         echo "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=9\" />";
         // Load CSS
         foreach($GLOBALS['XMLReader']->Header->StyleSheets as $ref)
         {
-            // $ref = asset($ref);
             echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $ref . "\" media=\"screen\">";
         }
         echo "</head>";
@@ -91,8 +89,10 @@
 
             <?php 
                 echo "<footer>";
+                echo "<div class=\"footer-container\"";
                 echo "<p>© " .  str_replace("@year", date("Y"), $GLOBALS['XMLReader']->Footer->Copyright) . "</p>";
                 echo "<p><a href=\"https://github.com/BrandonMFong/Site\">Open Source</a></p>";
+                echo "</div>";
                 echo "</footer>";
             ?>
         </div>

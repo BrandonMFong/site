@@ -33,7 +33,7 @@ html {
 /* Biography  */
 
 .bio-container {
-    margin: 10px;
+    margin: 0 auto;
     height: 500px;
     width: 1000px;
 }
@@ -52,5 +52,9 @@ html {
 
 .bio-container>p {
     margin: 20px;
+    text-align: center;
+}
+
+.footer-container {
     text-align: center;
 }

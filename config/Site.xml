@@ -57,6 +57,18 @@
                 <ImageFile>img/DualPower/OverallDiagram.PNG</ImageFile>
             </SlideShow>
         </Project>
+        <Project Topic="Roloflex">
+            <Description>
+                Being the old fashion person I am, I grab my inspiration from the Rolodex.
+                &lt;br&gt;&lt;br&gt;
+                I found that I do not have all my personal information available as easy on some devices.  I do not carry my personal passwords with  me on my phone.  
+                Using a Raspberry Pi as my Apache server, Roloflex is similar to this site but for the purpose to host my access to my information, which is stored 
+                in a database on the Pi. 
+            </Description>
+            <SlideShow>
+                <ImageFile>img/Roloflex/Homepage.PNG</ImageFile>
+            </SlideShow>
+        </Project>
         <Project Topic="Sentry2.0">
             <Description>
                 Sentry2.0 was designed to set an alarm off when a key is pressed on my computer or when my mouse moved.
@@ -66,18 +78,6 @@
             <Description>
                 This site is actually a personal project of mine.  Programmed in PHP, this site will serve as a portfolio and supplement to my current resume.
             </Description>
-        </Project>
-        <Project Topic="Roloflex">
-            <Description>
-                Being the old fashion person I am, I grab my inspiration from the Rolodex.
-                &lt;br&gt;
-                I found that I do not have all my personal information available as easy on some devices.  I do not carry my personal passwords with  me on my phone.  
-                Using a Raspberry Pi as my Apache server, Roloflex is similar to this site but for the purpose to host my access to my information, which is stored 
-                in a database on the Pi. 
-            </Description>
-            <SlideShow>
-                <ImageFile>img/Roloflex/Homepage.PNG</ImageFile>
-            </SlideShow>
         </Project>
     </Projects>
 </Site>
