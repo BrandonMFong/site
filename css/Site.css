@@ -38,23 +38,28 @@ html {
     width: 1000px;
 }
 
-.bio-container>img {
+.push-center>img {
     float: left;
-    margin-right: 10px;
-    margin-left: 10px;
     max-height: 500px;
     max-width: 500px;
     height: auto;
     width: auto;
     object-fit: contain;
     display: block;
+    padding-right: 15px;
+    overflow: hidden;
 }
 
-.bio-container>p {
+.push-center>p {
     margin: 20px;
     text-align: center;
+    padding-left: 15px;
 }
 
 .footer-container {
     text-align: center;
+}
+
+.push-center {
+    margin-top: 30px;
 }
