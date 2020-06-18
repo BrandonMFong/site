@@ -20,6 +20,7 @@
             <xs:element name="URL"/>
          </xs:element>
       </xs:element>
+      <xs:element name="BioGuid" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <!-- Slide shows -->
       <xs:element name="Projects">
          <xs:element name="Project">

@@ -30,9 +30,9 @@
     </Links>
     <BioGuid>c546c208-8f5b-11ea-9c0c-8c1645f97121</BioGuid>
     <Projects>
-        <Project Topic="GlobalScripts">
+        <Project Topic="XmlPSProfile">
             <Description>
-                GlobalScripts is a personal powershell project.  When using powershell, the GlobalScript code defines framework in powershell that can be used 
+                XmlPSProfile is a personal powershell project.  When using powershell, the GlobalScript code defines framework in powershell that can be used 
                 throughout the powershell session time. 
                 &lt;br&gt;&lt;br&gt;
                 The code uses PowerShell, SQL Server, and XML.  Powershell for the obvious reasons.  SQL Server for private data that should not be shared.  XML is to define the 
