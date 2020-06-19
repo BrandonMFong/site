@@ -1,0 +1,31 @@
+/* Project division */
+
+.project-container {
+    margin-left: 400px;
+    margin-right: 400px;
+    text-align: center;
+}
+
+.Project {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    display: block;
+    clear: both;
+}
+
+.Project-Title {
+    margin-top: 3px;
+    margin-bottom: 3px;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.Project-Description {
+    margin-top: 3px;
+    margin-bottom: 3px;
+    font-size: 15px;
+}
+
+.project-container h2 {
+    font-size: 50px;
+}

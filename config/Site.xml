@@ -7,6 +7,7 @@
         <StyleSheets>css/SlideShow.css</StyleSheets>
         <StyleSheets>css/Site.css</StyleSheets>
         <StyleSheets>css/Header.css</StyleSheets>
+        <StyleSheets>css/projects.css</StyleSheets>
     </Header>
     <Scripts>
         <Script>js/SlideShow.js</Script>
@@ -32,11 +33,8 @@
     <Projects>
         <Project Topic="XmlPSProfile">
             <Description>
-                XmlPSProfile is a personal powershell project.  When using powershell, the GlobalScript code defines framework in powershell that can be used 
-                throughout the powershell session time. 
-                &lt;br&gt;&lt;br&gt;
-                The code uses PowerShell, SQL Server, and XML.  Powershell for the obvious reasons.  SQL Server for private data that should not be shared.  XML is to define the 
-                specific environment the code is running on (i.e. different computers and the directories on them).
+                What is in your Powershell profile script?  XmlPSProfile leverages .xml files to load the profile scripts.  Using .xml files, XmlPSProfile allows you to declare: 
+                Aliases, Modules,Objects, and Shell Settings. XmlPSProfile also offers its own set of libraries and scripts that are developed and in development like:
             </Description>
             <SlideShow>
                 <ImageFile>img/GlobalScripts/Dashboard.PNG</ImageFile>
@@ -69,14 +67,21 @@
                 <ImageFile>img/Roloflex/Homepage.PNG</ImageFile>
             </SlideShow>
         </Project>
-        <Project Topic="Sentry2.0">
-            <Description>
-                Sentry2.0 was designed to set an alarm off when a key is pressed on my computer or when my mouse moved.
-            </Description>
-        </Project>
         <Project Topic="Site">
             <Description>
-                This site is actually a personal project of mine.  Programmed in PHP, this site will serve as a portfolio and supplement to my current resume.
+                This site is actually a personal project of mine.  Programmed in PHP, this site will serve as a portfolio and supplement to my current resume.  
+                My goal is to make this site configurable and can be interchanged with different xml files.  My next goal is to make a web page for my music that mirrors this. 
+            </Description>
+        </Project>
+        <Project Topic="Sentry2.0">
+            <Description>
+                Sentry2.0 was designed to set an alarm off when a key is pressed on my computer or when my mouse moved.  
+            </Description>
+        </Project>
+        <Project Topic="FPGAClock">
+            <Description>
+                The FPGA Clock project is a rebirth of one of my projects in my undergrad.  My FPGA board is just sitting at the side of my bed picking up dust, so might as well 
+                make a clock out of it. 
             </Description>
         </Project>
     </Projects>
