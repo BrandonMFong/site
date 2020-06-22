@@ -4,6 +4,9 @@
 # Constructs path
 [string]$DestinationPath = $JSONReader.Destination + "\$($JSONReader.SiteName)";
 
+Remove-Item $DestinationPath -Force -Recurse -Verbose;
+mkdir $DestinationPath -Verbose;
+
 Push-Location $JSONReader.Source;
     [System.Object[]]$Directories = (Get-ChildItem).FullName; # Puts all items in source path
     for($i=0;$i -lt $Directories.Length;$i++)

@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<Site 
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-    xsi:schemaLocation="..\schema\Site.xsd">
+<Site xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="..\schema\Site.xsd">
     <SiteTitle>Brandon Fong</SiteTitle>
     <Header>
-        <StyleSheets>css/SlideShow.css</StyleSheets>
+        <StyleSheets>css/slideshow.css</StyleSheets>
         <StyleSheets>css/Site.css</StyleSheets>
         <StyleSheets>css/Header.css</StyleSheets>
         <StyleSheets>css/projects.css</StyleSheets>
     </Header>
     <Scripts>
-        <Script>js/SlideShow.js</Script>
+        <!-- For jquery, I can download the actual file -->
+        <Script>https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js</Script>
+        <Script>http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.js</Script>
+        <Script type="text/javascript">js/slideshow.js</Script>
+        <Script type="text/javascript">js/Visibility.js</Script>
     </Scripts>
     <Footer>
         <Copyright>@year Brandon Fong All Rights Reserved</Copyright>

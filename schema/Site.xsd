@@ -8,7 +8,9 @@
          <xs:element name="StyleSheets" type="xs:string"/>
       </xs:element>
       <xs:element name="Scripts">
-         <xs:element name="Script" type="xs:string"/>
+         <xs:element name="Script" type="xs:string">
+            <xs:attribute name="type" type="xs:string" use="optional"/>
+         </xs:element>
       </xs:element>
       <xs:element name="Footer">
          <xs:element name="Copyright" type="xs:string"/>

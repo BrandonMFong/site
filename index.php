@@ -32,10 +32,6 @@
         echo "</head>";
     ?>
     <body>
-        <?php 
-            // Load Javascripts
-            foreach($GLOBALS['XMLReader']->Scripts->Script as $script){echo "<script src=\"" . $script . "\"></script>";}
-        ?>
         <div class="header">
             <div class="hero-text">
                 <?php 
@@ -55,7 +51,6 @@
                 echo "</div>";
                 echo "</div>";
             ?>
-            
             <div class="project-container">
                 <?php 
                     // Projects
@@ -63,7 +58,7 @@
                     $i = 1;
                     foreach($GLOBALS['XMLReader']->Projects->Project as $Project)
                     {
-                        echo "<div class=\"Project\">";
+                        echo "<div class=\"Project NotVisible\">";
                         echo "<div class=\"Project-Title\">" . $Project['Topic'] . "</div>";
                         echo "<div class=\"Project-Description\">" . $Project->Description . "</div>";
                         
@@ -71,25 +66,27 @@
                         if(!empty($Project->SlideShow))
                         {
                             echo "<div class=\"slideshow-container border-box\">";
+                            $ImgCount = 0;
                             foreach($Project->SlideShow->ImageFile as $Image)
                             {
                                 echo "<div class=\"Slide SlideClass" . $i . "\">";
                                 echo "<img src=\"" . $Image . "\" class=\"ImageSlides\">";
                                 echo "</div>";
+                                $ImgCount++;
                             }
-                            echo "<a class=\"prev\" onclick=\"plusSlides(-1,'SlideClass" . $i . "')\">&#10094;</a>";
-                            echo "<a class=\"next\" onclick=\"plusSlides(1,'SlideClass" . $i . "')\">&#10095;</a>";
+                            if($ImgCount > 1) // If there is more than one image
+                            {
+                                echo "<a class=\"prev\" onclick=\"plusSlides(-1,'SlideClass" . $i . "')\">&#10094;</a>";
+                                echo "<a class=\"next\" onclick=\"plusSlides(1,'SlideClass" . $i . "')\">&#10095;</a>";
+                            }
                             echo "</div>";
-                            echo "<script>";
-                            echo "showSlides(1,'SlideClass" . $i . "')";
-                            echo "</script>";
+                            echo "<div class=\"Tag\" Value=\"" . $i . "\"></div>";
                         }
                         echo "</div>";
                         $i++;
                     }
                 ?>
             </div>
-
             <?php 
                 echo "<footer>";
                 echo "<div class=\"footer-container\"";
@@ -97,6 +94,15 @@
                 echo "<p><a href=\"https://github.com/BrandonMFong/Site\">Open Source</a></p>";
                 echo "</div>";
                 echo "</footer>";
+            ?>
+            <?php 
+                // Load Javascripts
+                foreach($GLOBALS['XMLReader']->Scripts->Script as $script)
+                {
+                    echo "<script ";
+                    if(!empty($script['type'])) {echo "type=\"" . $script['type'] . "\" ";}
+                    echo "src=\"" . $script . "\"></script>";
+                }
             ?>
         </div>
     </body>
