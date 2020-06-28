@@ -3,7 +3,6 @@
    <xs:element name="Site">
       <xs:complexType>
          <xs:all>
-            <xs:element name="IsUnderMaintenance" type="xs:string"/>
             <xs:element name="SiteTitle" type="xs:string"/>
             <!-- Contains all header elements -->
             <xs:element name="Header">
@@ -71,33 +70,6 @@
                         </xs:complexType>
                      </xs:element>
                   </xs:sequence>
-               </xs:complexType>
-            </xs:element>
-            <!-- Env config -->
-            <xs:element name="Environment"/>
-            <!-- FTP -->
-            <xs:element name="Destination">
-               <xs:complexType>
-                  <xs:sequence>
-                     <xs:element name="Site"/>
-                     <xs:element name="Processes">
-                        <xs:complexType>
-                           <xs:sequence>
-                              <xs:element name="Process">
-                                 <xs:complexType>
-                                    <xs:sequence>
-                                       <xs:element name="Tag"/>
-                                       <xs:element name="LCD"/>
-                                       <xs:element name="CD"/>
-                                       <xs:element name="Package"/>
-                                    </xs:sequence>
-                                 </xs:complexType>
-                              </xs:element>
-                           </xs:sequence>
-                        </xs:complexType>
-                     </xs:element>
-                  </xs:sequence>
-                  <xs:attribute name="Name"/>
                </xs:complexType>
             </xs:element>
             <!-- Environment Credentials -->
