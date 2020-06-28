@@ -9,6 +9,6 @@ VCODE_Site.code-workspace
 docs/*
 img/*
 config/env.xml
-config/environmentcredentials.xml
+config/credentials.xml
 config/ssh.json
 subdomains/*

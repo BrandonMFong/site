@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <Site 
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-    xsi:schemaLocation="..\schema\Site.xsd">
+    xsi:noNamespaceSchemaLocation="..\schema\Site.xsd">
     <Destination Name="Default">
         <Site>brandonmfong.com</Site>
         <Processes><!-- Not specifying if it is put or get -->
@@ -21,7 +21,7 @@
                 <Tag>Configuration - Credentials</Tag>
                 <LCD>B:\SOURCES\Repos\Site\config</LCD>
                 <CD>/home/u820870703/domains/brandonmfong.com/public_html/config</CD>
-                <Package>environmentcredentials.xml</Package>
+                <Package>credentials.xml</Package>
             </Process>
             <Process>
                 <Tag>Certificates</Tag>
@@ -56,7 +56,7 @@
                 <Tag>Configuration - Credentials</Tag>
                 <LCD>B:\SOURCES\Repos\Site\config</LCD>
                 <CD>/home/u820870703/domains/brandonmfong.com/public_html/subdomains/dev/config</CD>
-                <Package>environmentcredentials.xml</Package>
+                <Package>credentials.xml</Package>
             </Process>
             <Process>
                 <Tag>Certificates</Tag>

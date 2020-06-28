@@ -3,7 +3,7 @@
     
     // Load xml
     $_SESSION['XMLReader-String'] = file_get_contents("config/Site.xml") or die("Failed to load");
-    $_SESSION['CredConfig-String'] = file_get_contents("config/environmentcredentials.xml") or die("Failed to load");
+    $_SESSION['CredConfig-String'] = file_get_contents("config/credentials.xml") or die("Failed to load");
     $_SESSION['WebConfig-String'] = file_get_contents("config/env.xml") or die("Failed to load");
     $GLOBALS['XMLReader'] = simplexml_load_string($_SESSION['XMLReader-String']);
     $GLOBALS['CredConfig'] = simplexml_load_string($_SESSION['CredConfig-String']);

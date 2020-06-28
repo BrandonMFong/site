@@ -1,65 +1,124 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <xs:schema xmlns:xs = "http://www.w3.org/2001/XMLSchema">
    <xs:element name="Site">
-      <xs:element name="IsUnderMaintenance" type="xs:string"/>
-      <xs:element name="SiteTitle" type="xs:string"/>
-      <!-- Contains all header elements -->
-      <xs:element name="Header">
-         <xs:element name="StyleSheets" type="xs:string"/>
-      </xs:element>
-      <xs:element name="Scripts">
-         <xs:element name="Script" type="xs:string">
-            <xs:attribute name="type" type="xs:string" use="optional"/>
-         </xs:element>
-      </xs:element>
-      <xs:element name="Footer">
-         <xs:element name="Copyright" type="xs:string"/>
-      </xs:element>
-      <!-- Contains all links to go somewhere else -->
-      <xs:element name="Links">
-         <xs:element name="Link">
-            <xs:element name="Name"/>
-            <xs:element name="URL"/>
-         </xs:element>
-      </xs:element>
-      <xs:element name="BioGuid" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <!-- Slide shows -->
-      <xs:element name="Projects">
-         <xs:element name="Project">
-            <xs:attribute name="Topic"/>
-            <xs:element name="Description"/>
-            <xs:element name="SlideShow">
-               <xs:element name="ImageFile"/>
+      <xs:complexType>
+         <xs:all>
+            <xs:element name="IsUnderMaintenance" type="xs:string"/>
+            <xs:element name="SiteTitle" type="xs:string"/>
+            <!-- Contains all header elements -->
+            <xs:element name="Header">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="StyleSheets" type="xs:string"/>
+                  </xs:sequence>
+               </xs:complexType>
             </xs:element>
-         </xs:element>
-      </xs:element>
-   </xs:element>
-
-   <!-- Env config -->
-   <xs:element name="Environment"/>
-
-   <!-- FTP -->
-   <xs:element name="Destination">
-      <xs:attribute name="Name"/>
-      <xs:element name="Site"/>
-      <xs:element name="Processes">
-         <xs:element name="Process">
-            <xs:element name="Tag"/>
-            <xs:element name="LCD"/>
-            <xs:element name="CD"/>
-            <xs:element name="Package"/>
-         </xs:element>
-      </xs:element>
-   </xs:element>
-
-   <!-- Environment Credentials -->
-   <xs:element name="Variables">
-      <xs:element name="Variable">
-         <xs:attribute name="Environment"/>
-         <xs:element name="Servername"/>
-         <xs:element name="Username"/>
-         <xs:element name="Password"/>
-         <xs:element name="Database"/>
-      </xs:element>
+            <xs:element name="Scripts">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="Script">
+                        <xs:complexType>
+                           <xs:simpleContent>
+                              <xs:extension base="xs:string">
+                                 <xs:attribute name="type" type="xs:string" use="optional"/>
+                              </xs:extension>
+                           </xs:simpleContent>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="Footer">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="Copyright" type="xs:string"/>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <!-- Contains all links to go somewhere else -->
+            <xs:element name="Links">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="Link">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="Name"/>
+                              <xs:element name="URL"/>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="BioGuid" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <!-- Slide shows -->
+            <xs:element name="Projects">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="Project">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="Description"/>
+                              <xs:element name="SlideShow">
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="ImageFile"/>
+                                    </xs:sequence>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                           <xs:attribute name="Topic"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <!-- Env config -->
+            <xs:element name="Environment"/>
+            <!-- FTP -->
+            <xs:element name="Destination">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="Site"/>
+                     <xs:element name="Processes">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="Process">
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="Tag"/>
+                                       <xs:element name="LCD"/>
+                                       <xs:element name="CD"/>
+                                       <xs:element name="Package"/>
+                                    </xs:sequence>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="Name"/>
+               </xs:complexType>
+            </xs:element>
+            <!-- Environment Credentials -->
+            <xs:element name="Variables">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="Variable">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="Servername"/>
+                              <xs:element name="Username"/>
+                              <xs:element name="Password"/>
+                              <xs:element name="Database"/>
+                           </xs:sequence>
+                           <xs:attribute name="Environment"/>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+         </xs:all>
+      </xs:complexType>
    </xs:element>
 </xs:schema>
