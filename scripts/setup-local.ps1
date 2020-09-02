@@ -4,7 +4,9 @@
 # Constructs path
 [string]$DestinationPath = $JSONReader.Destination + "\$($JSONReader.SiteName)";
 
-Remove-Item $DestinationPath -Force -Recurse -Verbose;
+# Delete the content
+if(![string]::IsNullOrEmpty($DestinationPath)){Remove-Item $DestinationPath -Force -Recurse -Verbose;}
+
 mkdir $DestinationPath -Verbose;
 
 Push-Location $JSONReader.Source;
