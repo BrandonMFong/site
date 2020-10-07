@@ -6,11 +6,11 @@
 
     $GLOBALS['XMLReader'] = simplexml_load_string($_SESSION['XMLReader-String']);
     $GLOBALS['CredConfig'] = simplexml_load_string($_SESSION['CredConfig-String']);
-    $GLOBALS['WebConfig'] = simplexml_load_string($_SESSION['WebConfig-String']);
+    // $GLOBALS['WebConfig'] = simplexml_load_string($_SESSION['WebConfig-String']);
 
     function GetVariables()
     {
-        $x = GetCorrectEnvironment($GLOBALS['WebConfig']->Environment);
+        $x = GetCorrectEnvironment($GLOBALS['XMLReader']->Environment);
 
         $GLOBALS['servername'] = $x->Servername;
         $GLOBALS['username'] = $x->Username;

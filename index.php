@@ -4,12 +4,12 @@
     // Load xml
     $_SESSION['XMLReader-String'] = file_get_contents("config/Site.xml") or die("Failed to load");
     $_SESSION['CredConfig-String'] = file_get_contents("config/credentials.xml") or die("Failed to load");
-    $_SESSION['WebConfig-String'] = file_get_contents("config/env.xml") or die("Failed to load");
+    // $_SESSION['WebConfig-String'] = file_get_contents("config/env.xml") or die("Failed to load");
     $GLOBALS['XMLReader'] = simplexml_load_string($_SESSION['XMLReader-String']);
     $GLOBALS['CredConfig'] = simplexml_load_string($_SESSION['CredConfig-String']);
-    $GLOBALS['WebConfig'] = simplexml_load_string($_SESSION['WebConfig-String']);
+    // $GLOBALS['WebConfig'] = simplexml_load_string($_SESSION['WebConfig-String']);
 
-    if($GLOBALS['WebConfig']->IsUnderMaintenance == 'True')
+    if($GLOBALS['XMLReader']->IsUnderMaintenance == 'True')
     {
         header("Location:views/Maintenance.html");
         exit();
@@ -24,6 +24,7 @@
         echo "<title>" . $GLOBALS['XMLReader']->SiteTitle . "</title>";
         echo "<meta http-equiv=\"Content-Type\" content=\"text/html\; charset=UTF-8\" />";
         echo "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=9\" />";
+        // echo "<meta name=\"robots\" content=\"noindex,nofollow\">";
         // Load CSS
         foreach($GLOBALS['XMLReader']->Header->StyleSheets as $ref)
         {
