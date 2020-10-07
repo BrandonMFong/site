@@ -1,16 +1,30 @@
 <?php
-    include("variables.php");
+
+    // TODO: remake the database structure
     global $Connected, $SendOverride;
     $Connected = false;
     $SendOverride = false;
 
     $GLOBALS['XMLReader'] = simplexml_load_string($_SESSION['XMLReader-String']);
     $GLOBALS['CredConfig'] = simplexml_load_string($_SESSION['CredConfig-String']);
-    // $GLOBALS['WebConfig'] = simplexml_load_string($_SESSION['WebConfig-String']);
 
+    function GetCorrectEnvironment()
+    {
+        $val = getcwd();
+        if($val == $GLOBALS["XMLReader"]->Environment->Local)
+        {
+            return $GLOBALS['CredConfig']->Local;
+        }
+        elseif($val == $GLOBALS["XMLReader"]->Environment->Server)
+        {
+            return $GLOBALS['CredConfig']->Server;
+        }
+        else{echo "Something bad happened";}
+    }
+    
     function GetVariables()
     {
-        $x = GetCorrectEnvironment($GLOBALS['XMLReader']->Environment);
+        $x = GetCorrectEnvironment();
 
         $GLOBALS['servername'] = $x->Servername;
         $GLOBALS['username'] = $x->Username;
