@@ -3,6 +3,32 @@
    <xs:element name="Site">
       <xs:complexType>
          <xs:sequence>
+            <xs:element name="IsUnderMaintenance" >
+               <xs:annotation>
+                  <xs:documentation>
+                     If the site is under maintenance
+                  </xs:documentation>
+               </xs:annotation>
+               <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                     <xs:enumeration value="False"/>
+                     <xs:enumeration value="True"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="Environment">
+               <xs:annotation>
+                  <xs:documentation>
+                     Provide full file path to the site on each machine
+                  </xs:documentation>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="Local"></xs:element>
+                     <xs:element name="Server"></xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
             <xs:element name="SiteTitle" type="xs:string"/>
             <!-- Contains all header elements -->
             <xs:element name="Header">
