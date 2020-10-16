@@ -70,4 +70,18 @@
         $GLOBALS['conn']->query($querystring);
         Close();
     }
+
+    // Queries table by guid
+    function GetSiteContent(string $guid)
+    {
+        global $Connected, $SendOverride;
+        $SendOverride = true;
+        if(!$Connected){Connect();}
+        $filepath = "/sql/GetSiteContent.sql";
+        $sqlfile =  fopen($filepath, "r") or die("Unable to read file.");
+        $querystring = fread($sqlfile, filesize($filepath));
+        
+        if(!Query(str_replace("@guid",$GLOBALS['XMLReader']->BioGuid,$querystring))){return $GLOBALS['Results']->fetch_assoc();}
+        else{return false;}
+    }
 ?>

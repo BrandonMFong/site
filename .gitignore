@@ -12,3 +12,4 @@ config/env.xml
 config/creds.xml
 config/ssh.json
 subdomains/*
+*.log
