@@ -49,42 +49,6 @@
                 echo "</div>";
                 echo "</div>";
             ?>
-            <div class="project-container">
-                <?php 
-                    // Projects
-                    echo "<h2>Projects</h2>";
-                    $i = 1;
-                    foreach($GLOBALS['XMLReader']->Projects->Project as $Project)
-                    {
-                        echo "<div class=\"Project NotVisible\">";
-                        echo "<div class=\"Project-Title\">" . $Project['Topic'] . "</div>";
-                        echo "<div class=\"Project-Description\">" . $Project->Description . "</div>";
-                        
-                        // SlideShow Container
-                        if(!empty($Project->SlideShow))
-                        {
-                            echo "<div class=\"slideshow-container border-box\">";
-                            $ImgCount = 0;
-                            foreach($Project->SlideShow->ImageFile as $Image)
-                            {
-                                echo "<div class=\"Slide SlideClass" . $i . "\">";
-                                echo "<img src=\"" . $Image . "\" class=\"ImageSlides\">";
-                                echo "</div>";
-                                $ImgCount++;
-                            }
-                            if($ImgCount > 1) // If there is more than one image
-                            {
-                                echo "<a class=\"prev\" onclick=\"plusSlides(-1,'SlideClass" . $i . "')\">&#10094;</a>";
-                                echo "<a class=\"next\" onclick=\"plusSlides(1,'SlideClass" . $i . "')\">&#10095;</a>";
-                            }
-                            echo "</div>";
-                            echo "<div class=\"Tag\" Value=\"" . $i . "\"></div>";
-                        }
-                        echo "</div>";
-                        $i++;
-                    }
-                ?>
-            </div>
             <?php 
                 echo "<footer>";
                 echo "<div class=\"footer-container\"";
