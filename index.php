@@ -22,7 +22,6 @@
         echo "<title>" . $GLOBALS['XMLReader']->SiteTitle . "</title>";
         echo "<meta http-equiv=\"Content-Type\" content=\"text/html\; charset=UTF-8\" />";
         echo "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=9\" />";
-        // echo "<meta name=\"robots\" content=\"noindex,nofollow\">";
         // Load CSS
         foreach($GLOBALS['XMLReader']->Header->StyleSheets as $ref)
         {

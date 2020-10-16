@@ -31,6 +31,13 @@
             </xs:element>
             <xs:element name="SiteTitle" type="xs:string"/>
             <!-- Contains all header elements -->
+            <xs:element name="HeaderImage">
+               <xs:annotation>
+                  <xs:documentation>
+                     The image at the top of the site 
+                  </xs:documentation>
+               </xs:annotation>
+            </xs:element>
             <xs:element name="Header">
                <xs:complexType>
                   <xs:sequence>

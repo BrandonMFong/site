@@ -6,10 +6,11 @@
         <Server>/var/www/brandonmfong.com</Server>
     </Environment>
     <SiteTitle>Brandon Fong</SiteTitle>
+    <HeaderImage>/img/PromptString.PNG</HeaderImage>
     <Header>
         <StyleSheets>css/slideshow.css</StyleSheets>
         <StyleSheets>css/Site.css</StyleSheets>
-        <StyleSheets>css/Header.css</StyleSheets>
+        <StyleSheets>css/Header.php</StyleSheets>
         <StyleSheets>css/projects.css</StyleSheets>
     </Header>
     <Scripts>
