@@ -39,13 +39,12 @@
             </div>
         </div>
         <div class="Content">
-
             <?php 
                 /* Bio */ 
                 echo "<div class=\"bio-container\">";
                 echo "<div class=\"push-center\">";
                 echo "<img src='img/SMTrip.jpg'/>";
-                echo "<p>" . (QueryByFile("sql/GetBio.sql"))['VALUE'] . "</p>";
+                echo "<p>" . (QueryByFile("sql/GetBio.sql"))['Value'] . "</p>";
                 echo "</div>";
                 echo "</div>";
             ?>

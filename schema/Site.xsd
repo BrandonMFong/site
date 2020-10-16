@@ -38,6 +38,13 @@
                   </xs:documentation>
                </xs:annotation>
             </xs:element>
+            <xs:element name="BioGuid" type="xs:string" minOccurs="1" maxOccurs="1">
+               <xs:annotation>
+                  <xs:documentation>
+                     16B length guid
+                  </xs:documentation>
+               </xs:annotation>
+            </xs:element>
             <xs:element name="Header">
                <xs:complexType>
                   <xs:sequence>
