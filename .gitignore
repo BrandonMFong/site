@@ -14,3 +14,4 @@ config/ssh.json
 subdomains/*
 *.log
 debug.log 
+setup-remote.ps1
