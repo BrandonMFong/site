@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <Site xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\schema\Site.xsd">
-    <IsUnderMaintenance>True</IsUnderMaintenance>
+    <IsUnderMaintenance>False</IsUnderMaintenance>
     <Environment>
-        <Local>B:\SOURCE\Repo\Site</Local>
+        <Local>C:\xampp\htdocs\brandonmfong.com</Local>
         <Server>/var/www/brandonmfong.com</Server>
     </Environment>
     <SiteTitle>Brandon Fong</SiteTitle>
+    <HeaderImage>/img/PromptString.PNG</HeaderImage>
+    <BioGuid>7bb407a52b6549af</BioGuid>
     <Header>
-        <StyleSheets>css/slideshow.css</StyleSheets>
         <StyleSheets>css/Site.css</StyleSheets>
-        <StyleSheets>css/Header.css</StyleSheets>
-        <StyleSheets>css/projects.css</StyleSheets>
+        <StyleSheets>css/Header.php</StyleSheets>
     </Header>
     <Scripts>
         <!-- For jquery, I can download the actual file -->

@@ -1,0 +1,1 @@
+select Value from sitecontent where guid = @guid

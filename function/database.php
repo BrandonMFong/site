@@ -1,16 +1,30 @@
 <?php
-    include("variables.php");
+
+    // TODO: remake the database structure
     global $Connected, $SendOverride;
     $Connected = false;
     $SendOverride = false;
 
     $GLOBALS['XMLReader'] = simplexml_load_string($_SESSION['XMLReader-String']);
     $GLOBALS['CredConfig'] = simplexml_load_string($_SESSION['CredConfig-String']);
-    // $GLOBALS['WebConfig'] = simplexml_load_string($_SESSION['WebConfig-String']);
 
+    function GetCorrectEnvironment()
+    {
+        $val = getcwd();
+        if($val == $GLOBALS["XMLReader"]->Environment->Local)
+        {
+            return $GLOBALS['CredConfig']->Local;
+        }
+        elseif($val == $GLOBALS["XMLReader"]->Environment->Server)
+        {
+            return $GLOBALS['CredConfig']->Server;
+        }
+        else{echo "Something bad happened";}
+    }
+    
     function GetVariables()
     {
-        $x = GetCorrectEnvironment($GLOBALS['XMLReader']->Environment);
+        $x = GetCorrectEnvironment();
 
         $GLOBALS['servername'] = $x->Servername;
         $GLOBALS['username'] = $x->Username;
@@ -55,5 +69,19 @@
         if(!$Connected){Connect();}
         $GLOBALS['conn']->query($querystring);
         Close();
+    }
+
+    // Queries table by guid
+    function GetSiteContent(string $guid)
+    {
+        global $Connected, $SendOverride;
+        $SendOverride = true;
+        if(!$Connected){Connect();}
+        $filepath = "/sql/GetSiteContent.sql";
+        $sqlfile =  fopen($filepath, "r") or die("Unable to read file.");
+        $querystring = fread($sqlfile, filesize($filepath));
+        
+        if(!Query(str_replace("@guid",$GLOBALS['XMLReader']->BioGuid,$querystring))){return $GLOBALS['Results']->fetch_assoc();}
+        else{return false;}
     }
 ?>
