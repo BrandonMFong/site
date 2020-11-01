@@ -30,20 +30,19 @@
                </xs:complexType>
             </xs:element>
             <xs:element name="SiteTitle" type="xs:string"/>
-            <!-- Contains all header elements -->
-            <xs:element name="HeaderImage">
+            <xs:element name="Images">
                <xs:annotation>
                   <xs:documentation>
                      The image at the top of the site 
                   </xs:documentation>
                </xs:annotation>
-            </xs:element>
-            <xs:element name="BioGuid" type="xs:string" minOccurs="1" maxOccurs="1">
-               <xs:annotation>
-                  <xs:documentation>
-                     16B length guid
-                  </xs:documentation>
-               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="Image1"/>
+                     <xs:element name="Image2"/>
+                     <xs:element name="Image3"/>
+                  </xs:sequence>
+               </xs:complexType>
             </xs:element>
             <xs:element name="Header">
                <xs:complexType>
@@ -74,39 +73,29 @@
                   </xs:sequence>
                </xs:complexType>
             </xs:element>
-            <!-- Contains all links to go somewhere else -->
-            <xs:element name="Links">
+            <xs:element name="Sections">
                <xs:complexType>
                   <xs:sequence>
-                     <xs:element name="Link" maxOccurs="unbounded">
+                     <xs:element name="Section" minOccurs="1" maxOccurs="unbounded">
                         <xs:complexType>
                            <xs:sequence>
-                              <xs:element name="Name"/>
-                              <xs:element name="URL"/>
+                              <xs:element name="Guid" minOccurs="0"></xs:element>
+                              <xs:element name="NavItems" minOccurs="0"></xs:element>
+                              <xs:element name="Items" minOccurs="0"></xs:element>
+                              <xs:element name="DivClasses" minOccurs="0"></xs:element>
                            </xs:sequence>
-                        </xs:complexType>
-                     </xs:element>
-                  </xs:sequence>
-               </xs:complexType>
-            </xs:element>
-            <xs:element name="BioGuid" type="xs:string" minOccurs="0" maxOccurs="1"/>
-            <!-- Slide shows -->
-            <xs:element name="Projects">
-               <xs:complexType>
-                  <xs:sequence>
-                     <xs:element name="Project" maxOccurs="unbounded">
-                        <xs:complexType>
-                           <xs:sequence>
-                              <xs:element name="Description"/>
-                              <xs:element name="SlideShow" minOccurs="0" maxOccurs="1">
-                                 <xs:complexType>
-                                    <xs:sequence>
-                                       <xs:element name="ImageFile" maxOccurs="unbounded"/>
-                                    </xs:sequence>
-                                 </xs:complexType>
-                              </xs:element>
-                           </xs:sequence>
-                           <xs:attribute name="Topic"/>
+                           <xs:attribute name="ID"></xs:attribute>
+                           <xs:attribute name="Type">
+                              <xs:simpleType>
+                                 <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Hero"></xs:enumeration>
+                                    <xs:enumeration value="Grid"></xs:enumeration>
+                                    <xs:enumeration value="Bubbles"></xs:enumeration>
+                                    <xs:enumeration value="Gallery"></xs:enumeration>
+                                    <xs:enumeration value="Info"></xs:enumeration>
+                                 </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
                         </xs:complexType>
                      </xs:element>
                   </xs:sequence>

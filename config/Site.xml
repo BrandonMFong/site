@@ -6,90 +6,62 @@
         <Server>/var/www/brandonmfong.com</Server>
     </Environment>
     <SiteTitle>Brandon Fong</SiteTitle>
-    <HeaderImage>/img/PromptString.PNG</HeaderImage>
-    <BioGuid>7bb407a52b6549af</BioGuid>
+    <Images>
+        <Image1>/img/sf.jpg</Image1>
+        <Image2>/img/sd.jpg</Image2>
+        <Image3>/img/ny.jpg</Image3>
+    </Images>
     <Header>
-        <StyleSheets>css/Site.css</StyleSheets>
-        <StyleSheets>css/Header.php</StyleSheets>
+        <StyleSheets>fontawesome-5.5/css/all.min.css</StyleSheets>
+        <StyleSheets>slick/slick.css</StyleSheets>
+        <StyleSheets>slick/slick-theme.css</StyleSheets>
+        <StyleSheets>magnific-popup/magnific-popup.css</StyleSheets>
+        <StyleSheets>css/bootstrap.min.css</StyleSheets>
+        <StyleSheets>css/tooplate-infinite-loop.php</StyleSheets>
+        <StyleSheets>css/add.css</StyleSheets>
     </Header>
     <Scripts>
-        <!-- For jquery, I can download the actual file -->
-        <Script>https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js</Script>
-        <Script>http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.js</Script>
-        <Script type="text/javascript">js/slideshow.js</Script>
-        <Script type="text/javascript">js/Visibility.js</Script>
+        <Script>js/jquery-1.9.1.min.js</Script>
+        <Script>slick/slick.min.js</Script>
+        <Script>magnific-popup/jquery.magnific-popup.min.js</Script>
+        <Script>js/easing.min.js</Script>
+        <Script>js/jquery.singlePageNav.min.js</Script>
+        <Script>js/bootstrap.min.js</Script>
+        <Script>js/toolplate_add.js</Script>
     </Scripts>
     <Footer>
         <Copyright>@year Brandon Fong All Rights Reserved</Copyright>
     </Footer>
-    <Links>
-        <Link>
-            <Name>GitHub</Name>
-            <URL>https://github.com/BrandonMFong</URL>
-        </Link>
-        <Link>
-            <Name>LinkedIn</Name>
-            <URL>https://www.linkedin.com/in/brandonmfong/</URL>
-        </Link>
-        <Link>
-            <Name>Resume</Name>
-            <URL>docs/MAIN_RESUME.pdf</URL>
-        </Link>
-    </Links>
-    <BioGuid>c546c208-8f5b-11ea-9c0c-8c1645f97121</BioGuid>
-    <Projects>
-        <Project Topic="XmlPSProfile">
-            <Description>
-                What is in your Powershell profile script?  XmlPSProfile leverages .xml files to load the profile scripts.  Using .xml files, XmlPSProfile allows you to declare: 
-                Aliases, Modules,Objects, and Shell Settings. XmlPSProfile also offers its own set of libraries and scripts that are developed and in development like:
-            </Description>
-            <SlideShow>
-                <ImageFile>img/GlobalScripts/Dashboard.PNG</ImageFile>
-                <ImageFile>img/GlobalScripts/Dashboard2.PNG</ImageFile>
-            </SlideShow>
-        </Project>
-        <Project Topic="Dual Power Generation">
-            <Description>
-                Dual Power Generation is a Senior Design Project.  Our goal was to turn Solar and Wind into energy.  The group consisted of Electrical and Computer Engineers.  
-                As a Computer Engineer, my role was to calculate the Max Power between Solar and Wind and display the information to our end user.  
-            </Description>
-            <SlideShow>
-                <ImageFile>img/DualPower/FinalLogo.PNG</ImageFile>
-                <ImageFile>img/DualPower/PhotoOfEquipment.PNG</ImageFile>
-                <ImageFile>img/DualPower/DatabaseSruct_Diagram.PNG</ImageFile>
-                <ImageFile>img/DualPower/InsertDB_Diagram.png</ImageFile>
-                <ImageFile>img/DualPower/Max_Pwr_Tracker_Coding_Diagram.PNG</ImageFile>
-                <ImageFile>img/DualPower/OverallDiagram.PNG</ImageFile>
-            </SlideShow>
-        </Project>
-        <Project Topic="Roloflex">
-            <Description>
-                Being the old fashion person I am, I grab my inspiration from the Rolodex.
-                &lt;br&gt;&lt;br&gt;
-                I found that I do not have all my personal information available as easy on some devices.  I do not carry my personal passwords with  me on my phone.  
-                Using a Raspberry Pi as my Apache server, Roloflex is similar to this site but for the purpose to host my access to my information, which is stored 
-                in a database on the Pi. 
-            </Description>
-            <SlideShow>
-                <ImageFile>img/Roloflex/Homepage.PNG</ImageFile>
-            </SlideShow>
-        </Project>
-        <Project Topic="Site">
-            <Description>
-                This site is actually a personal project of mine.  Programmed in PHP, this site will serve as a portfolio and supplement to my current resume.  
-                My goal is to make this site configurable and can be interchanged with different xml files.  My next goal is to make a web page for my music that mirrors this. 
-            </Description>
-        </Project>
-        <Project Topic="Sentry2.0">
-            <Description>
-                Sentry2.0 was designed to set an alarm off when a key is pressed on my computer or when my mouse moved.  
-            </Description>
-        </Project>
-        <Project Topic="FPGAClock">
-            <Description>
-                The FPGA Clock project is a rebirth of one of my projects in my undergrad.  My FPGA board is just sitting at the side of my bed picking up dust, so might as well 
-                make a clock out of it. 
-            </Description>
-        </Project>
-    </Projects>
+    <Sections>
+        <Section ID="infinite" Type="Hero">
+            <Guid>da68af358ca14eec</Guid>
+            <NavItems>
+                <NavItem ID="infinite" Name="Home"/>
+                <NavItem ID="whatwedo" Name="About Me"/>
+                <NavItem ID="testimonials" Name="Links"/>
+                <NavItem ID="gallery" Name="Gallery"/>
+                <NavItem ID="contact" Name="Contact"/>
+            </NavItems>
+            <DivClasses>text-white tm-font-big tm-parallax</DivClasses>
+        </Section>
+        <Section ID="whatwedo" Type="Grid">
+            <Guid>7bb407a52b6549af</Guid>
+            <DivClasses>tm-section-pad-top</DivClasses>
+        </Section>
+        <Section ID="testimonials" Type="Bubbles">
+            <Guid>0276c7ae95664558</Guid>
+            <Items>9c8f01e08a7e409e</Items>
+            <DivClasses>tm-section-pad-top tm-parallax-2</DivClasses>
+        </Section>
+        <Section ID="gallery" Type="Gallery">
+            <Guid>737356d42096471f</Guid>
+            <Items>aa6c4665bc6c4ffd</Items>
+            <DivClasses>tm-section-pad-top</DivClasses>
+        </Section>
+        <Section ID="contact" Type="Info">
+            <Guid>45f5799225ae4358</Guid>
+            <Items>c3ab9e13f51e4679</Items>
+            <DivClasses>tm-section-pad-top tm-parallax-2</DivClasses>
+        </Section>
+    </Sections>
 </Site>

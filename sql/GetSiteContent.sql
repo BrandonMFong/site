@@ -1,1 +1,1 @@
-select Value from sitecontent where guid = @guid
+SELECT Subject, Value, Image, Hyperlink from sitecontent where GUID = '@guid' AND IsActive = 1 ORDER BY ContentOrder ASC
