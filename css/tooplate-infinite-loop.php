@@ -159,7 +159,7 @@ blockquote {
 #infinite {
 	background-color: #222;
   background-image: url(..<?=$Img1?>);
-  background-repeat: no-repeat;
+  // background-repeat: no-repeat;
   background-size: 100%;
   height: 100vh;
   min-height: 375px;

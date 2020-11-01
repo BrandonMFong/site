@@ -129,12 +129,6 @@
       echo "</p>";
       echo "</div>";
       echo "</div>";
-
-      // echo "<div class=\"tm-next tm-intro-next\">";
-      // echo "<a href=\"#whatwedo\" class=\"text-center tm-down-arrow-link\">";
-      // echo "<i class=\"fas fa-2x fa-arrow-down tm-down-arrow\"></i>";
-      // echo "</a>";
-      // echo "</div>";
     }
 
     function GetGrid($section)
