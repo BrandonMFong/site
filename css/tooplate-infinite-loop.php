@@ -2,7 +2,6 @@
 session_start();
 header("Content-type: text/css");
 $GLOBALS['XMLReader'] = simplexml_load_string($_SESSION['XMLReader-String']);
-$GLOBALS['CredConfig'] = simplexml_load_string($_SESSION['CredConfig-String']);
 
 // Get image config
 $Img1 = $GLOBALS['XMLReader']->Images->Image1;

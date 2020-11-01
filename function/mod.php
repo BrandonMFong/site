@@ -7,7 +7,7 @@
     $GLOBALS['XMLReader'] = simplexml_load_string($_SESSION['XMLReader-String']);
     $GLOBALS['CredConfig'] = simplexml_load_string($_SESSION['CredConfig-String']);
 
-    function GetCorrectEnvironment()
+    function GetCorrectEnvironment()// runs through creds.xml for variables based on env
     {
         $val = getcwd();
         if($val == $GLOBALS["XMLReader"]->Environment->Local)
@@ -31,7 +31,7 @@
         $GLOBALS['dbname'] = $x->Database;
     }
 
-    function Connect()
+    function Connect() // connect to db 
     {
         GetVariables();
         $GLOBALS['conn'] = new mysqli($GLOBALS['servername'], $GLOBALS['username'], $GLOBALS['password'], $GLOBALS['dbname']);
@@ -39,9 +39,9 @@
         else{$Connected = true;}
     }
 
-    function Close(){$GLOBALS['conn']->close();}
+    function Close(){$GLOBALS['conn']->close();} // close db connection
 
-    function QueryByFile(string $filepath) 
+    function QueryByFile(string $filepath) // get query from file
     {
         global $Connected, $SendOverride;
         $SendOverride = true;
@@ -51,7 +51,7 @@
         else{return false;}
     }
 
-    function Query(string $querystring)
+    function Query(string $querystring) // execute the query
     {
         // echo $querystring . "\n"; 
         global $Connected, $SendOverride;
@@ -61,7 +61,7 @@
         else{Close(); return true;}
     }
 
-    function UpdateQuery(string $querystring)
+    function UpdateQuery(string $querystring) // i don't think I use this
     {
         global $Connected, $SendOverride;
         if(!$Connected){Connect();}
@@ -83,6 +83,7 @@
         else{return false;}
     }
 
+    // loads submenu for navigation through site
     function GetNav($section)
     {
       // Navigation 
@@ -110,6 +111,7 @@
       echo "</nav>";
     }
 
+    // Hero section contains nav, image and short description
     function GetHero($section)
     {
       $infiniteObject = null;
@@ -117,12 +119,9 @@
       $infiniteObject = GetSiteContent($section->Guid)->fetch_assoc();  
       GetNav($section);
 
-      // About me
-      
       echo "<div class=\"text-center tm-hero-text-container\">";
       echo "<img src=\"" . $infiniteObject["Image"] . "\" alt=\"Avatar\" class=\"img-avatar\">";
       echo "<div class=\"tm-hero-text-container-inner\">";
-      // echo "<img src=\"" . $infiniteObject["Image"] . "\" alt=\"Image\" class=\"img-fluid mx-auto\">";
       echo "<h2 class=\"tm-hero-title\">" . $infiniteObject['Subject'] . "</h2>";
       echo "<p class=\"tm-hero-subtitle\">";
       echo $infiniteObject['Value'];
@@ -131,6 +130,7 @@
       echo "</div>";
     }
 
+    // Grid is description section 
     function GetGrid($section)
     {
       $containerObject = null;
@@ -151,6 +151,7 @@
       echo "</div>";
     }
 
+    // bubbles contain links and descriptions
     function GetBubbles($section)
     {
       $containerObject = null;
@@ -229,6 +230,7 @@
       echo "</div>";
     }
 
+    // includes footer
     function GetInfo($section)
     {
       $contactObject = null;
@@ -257,7 +259,8 @@
       echo "<div class=\"contact-item\">&nbsp;</div>";
       echo "</div>";
       echo "</div>";
-      GetFooter();
+      
+      GetFooter(); // load footer
     }
 
     function GetFooter()
