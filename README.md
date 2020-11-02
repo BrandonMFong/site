@@ -2,15 +2,15 @@
 
 My website is hosted on my Raspberry Pi within my LAN and is now open to the world for the whole internet to access.
 
-[https://www.brandonmfong.com](http://www.brandonmfong.com/) - Site
+[https://www.brandonmfong.com](http://www.brandonmfong.com/)
 
 ## Prerequisites
 
 Software:
-* [Visual Studio Code](https://code.visualstudio.com/) - Text editor 
-* [Xampp](https://www.apachefriends.org/index.html) - To run the site on your localhost
+* [Visual Studio Code](https://code.visualstudio.com/) - Development 
+* [Xampp](https://www.apachefriends.org/index.html) - Apache Server
 * [WinSCP](https://winscp.net/eng/download.php) - FTP
-* [PowerShell](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-7) - To run scripts
+* [PowerShell](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-7) - Deploy/Tests
 
 Must have creds.xml to run:
 
@@ -34,5 +34,5 @@ Must have creds.xml to run:
 
 ## Authors
 
-* **Brandon Fong** - *Initial work* - [GitHub](https://github.com/BrandonMFong)
+**Brandon Fong** - [GitHub](https://github.com/BrandonMFong)
 
