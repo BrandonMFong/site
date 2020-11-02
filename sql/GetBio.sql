@@ -1,1 +1,0 @@
-select Value from sitecontent where GUID = '7bb407a52b6549af'
