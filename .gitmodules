@@ -1,0 +1,3 @@
+[submodule ".github/xPro"]
+	path = .github/xPro
+	url = https://github.com/BrandonMFong/xPro
