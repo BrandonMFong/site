@@ -1,6 +1,6 @@
 ﻿<?php 
     session_start();
-    include 'function/mod.php'; // Load useful functions to environment
+    include 'function/mod.php'; // Load useful functions to environment 
     
     // Load config files
     $_SESSION['XMLReader-String'] = file_get_contents("config/Site.xml") or die("Failed to load");
