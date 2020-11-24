@@ -25,7 +25,7 @@
                <xs:complexType>
                   <xs:sequence>
                      <xs:element name="Local"></xs:element>
-                     <xs:element name="Server"></xs:element>
+                     <xs:element name="Server" minOccurs="0"></xs:element>
                   </xs:sequence>
                </xs:complexType>
             </xs:element>
@@ -73,29 +73,28 @@
                   </xs:sequence>
                </xs:complexType>
             </xs:element>
-            <xs:element name="Sections">
+            <xs:element name="Pages">
                <xs:complexType>
                   <xs:sequence>
-                     <xs:element name="Section" minOccurs="1" maxOccurs="unbounded">
+                     <xs:element name="Page" maxOccurs="unbounded">
                         <xs:complexType>
                            <xs:sequence>
-                              <xs:element name="Guid" minOccurs="0"></xs:element>
-                              <xs:element name="NavItems" minOccurs="0"></xs:element>
-                              <xs:element name="Items" minOccurs="0"></xs:element>
-                              <xs:element name="DivClasses" minOccurs="0"></xs:element>
+                              <xs:element name="ConstructorExternalID"/>
+                              <xs:element name="NavItems">
+                                 <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="NavItem" minOccurs="1" maxOccurs="unbounded">
+                                          <xs:complexType>
+                                             <xs:attribute name="Ref" type="xs:string"/>
+                                             <xs:attribute name="Name" type="xs:string"/>
+                                             <xs:attribute name="Type" type="xs:string"/>
+                                          </xs:complexType>
+                                       </xs:element>
+                                    </xs:sequence>
+                                 </xs:complexType>
+                              </xs:element>
                            </xs:sequence>
-                           <xs:attribute name="ID"></xs:attribute>
-                           <xs:attribute name="Type">
-                              <xs:simpleType>
-                                 <xs:restriction base="xs:string">
-                                    <xs:enumeration value="Hero"></xs:enumeration>
-                                    <xs:enumeration value="Grid"></xs:enumeration>
-                                    <xs:enumeration value="Bubbles"></xs:enumeration>
-                                    <xs:enumeration value="Gallery"></xs:enumeration>
-                                    <xs:enumeration value="Info"></xs:enumeration>
-                                 </xs:restriction>
-                              </xs:simpleType>
-                           </xs:attribute>
+                           <xs:attribute name="Guid"/>
                         </xs:complexType>
                      </xs:element>
                   </xs:sequence>

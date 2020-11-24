@@ -2,8 +2,7 @@
 <Site xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\schema\Site.xsd">
     <IsUnderMaintenance>False</IsUnderMaintenance>
     <Environment>
-        <Local>C:\xampp\htdocs\brandonmfong.com</Local>
-        <Server>/var/www/brandonmfong.com</Server>
+        <Local>::1</Local>
     </Environment>
     <SiteTitle>Brandon Fong</SiteTitle>
     <Images>
@@ -32,36 +31,26 @@
     <Footer>
         <Copyright>@year Brandon Fong All Rights Reserved</Copyright>
     </Footer>
-    <Sections>
-        <Section ID="infinite" Type="Hero">
-            <Guid>da68af358ca14eec</Guid>
+    <Pages>
+        <Page Guid="0302fe9df0f54d91">
+            <ConstructorExternalID>HomePage</ConstructorExternalID>
             <NavItems>
-                <NavItem ID="infinite" Name="Home"/>
-                <NavItem ID="whatwedo" Name="About Me"/>
-                <NavItem ID="testimonials" Name="Links"/>
-                <NavItem ID="gallery" Name="Gallery"/>
-                <NavItem ID="contact" Name="Contact"/>
+                <NavItem Ref="infinite" Name="Home" Type="Hash"/>
+                <NavItem Ref="whatwedo" Name="About Me" Type="Hash"/>
+                <NavItem Ref="testimonials" Name="Links" Type="Hash"/>
+                <NavItem Ref="gallery" Name="Gallery" Type="Hash"/>
+                <NavItem Ref="contact" Name="Contact" Type="Hash"/>
             </NavItems>
-            <DivClasses>text-white tm-font-big tm-parallax</DivClasses>
-        </Section>
-        <Section ID="whatwedo" Type="Grid">
-            <Guid>7bb407a52b6549af</Guid>
-            <DivClasses>tm-section-pad-top</DivClasses>
-        </Section>
-        <Section ID="testimonials" Type="Bubbles">
-            <Guid>0276c7ae95664558</Guid>
-            <Items>9c8f01e08a7e409e</Items>
-            <DivClasses>tm-section-pad-top tm-parallax-2</DivClasses>
-        </Section>
-        <Section ID="gallery" Type="Gallery">
-            <Guid>737356d42096471f</Guid>
-            <Items>aa6c4665bc6c4ffd</Items>
-            <DivClasses>tm-section-pad-top</DivClasses>
-        </Section>
-        <Section ID="contact" Type="Info">
-            <Guid>45f5799225ae4358</Guid>
-            <Items>c3ab9e13f51e4679</Items>
-            <DivClasses>tm-section-pad-top tm-parallax-2</DivClasses>
-        </Section>
-    </Sections>
+        </Page>
+        <Page Guid="ec1f316d8f8f4e3b">
+            <ConstructorExternalID>DefaultInfoPage</ConstructorExternalID>
+            <NavItems>
+                <NavItem Ref="https://www.brandonmfong.com" Name="Home Page" Type="Uri"/>
+                <NavItem Ref="infinite" Name="Top" Type="Hash"/>
+                <NavItem Ref="whatwedo" Name="Description" Type="Hash"/>
+                <NavItem Ref="testimonials" Name="List" Type="Hash"/>
+                <NavItem Ref="gallery" Name="Photos" Type="Hash"/>
+            </NavItems>
+        </Page>
+    </Pages>
 </Site>

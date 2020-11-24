@@ -1,13 +1,10 @@
 ﻿<?php 
     session_start();
-    $_SESSION['Tab'] = "";
-    include $_SESSION['Tab'] . "function/mod.php"; // Load useful functions to environment
-    
-    // Load config files
-    $_SESSION['XMLReader-String'] = file_get_contents("config/Site.xml") or die("Failed to load");
-    $_SESSION['CredConfig-String'] = file_get_contents("config/creds.xml") or die("Failed to load");
+
+    $_SESSION['Tab'] = "../";
     $GLOBALS['XMLReader'] = simplexml_load_string($_SESSION['XMLReader-String']);
     $GLOBALS['CredConfig'] = simplexml_load_string($_SESSION['CredConfig-String']);
+    include $_SESSION['Tab'] . "function/mod.php"; // Load useful functions to environment
 
     if($GLOBALS['XMLReader']->IsUnderMaintenance == 'True') // if I am working on the site and it isn't ready to be public
     {
@@ -23,7 +20,8 @@
   <body>    
     <?php 
       // Load the sections of the html that defines the website
-      $results = initPage('0302fe9df0f54d91');
+      // $results = initPage('0302fe9df0f54d91'); // home 
+      $results = initPage('ec1f316d8f8f4e3b');// info 
       while($item = $results->fetch_assoc())
       {
         echo "<section id=\"" . $item["SectionID"] . "\" class=\"" . $item["DivClasses"] . "\">";
@@ -31,8 +29,6 @@
         echo "</section>";
       }
       GetJavascript(); // load scripts
-
-      // footer hyperlink does not work
     ?>
   </body>
 </html>

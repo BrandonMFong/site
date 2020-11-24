@@ -1,0 +1,1 @@
+SELECT * from constructor where ExternalID = '@externalid' AND IsActive = 1 ORDER BY PriorityOrder DESC

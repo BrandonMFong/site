@@ -1,9 +1,15 @@
 # Loads config
 [System.object[]]$JSONReader = Get-Content $PSScriptRoot\..\config\LaunchSite.json|Out-String|ConvertFrom-Json
 
-# Constructs path
-[string]$DestinationPath = $JSONReader.Destination + "\$($JSONReader.SiteName)";
+# Constructs path and obtain necessary executables
+[string]$DestinationPath = $JSONReader.Destination + "\htdocs" + "\$($JSONReader.SiteName)";
+[string]$StartXampp = "$PSScriptRoot\start-xampp.ps1";
+[string]$StopXampp = "$PSScriptRoot\stop-xampp.ps1";
 
+Write-Host "`nRestarting Xampp" -ForegroundColor Green
+& $StopXampp; # Stop Xampp instances that were previously on
+& $StartXampp; # Start new Xampp instance
+Write-Host "`n";
 # Delete the content
 if(![string]::IsNullOrEmpty($DestinationPath)){Remove-Item $DestinationPath -Force -Recurse -Verbose;}
 
@@ -18,7 +24,12 @@ Push-Location $JSONReader.Source;
         {
             if($JSONReader.Exclude[$j] -eq $($Directories[$i]|Split-Path -Leaf)){$Exclude=$true;}
         }
-        if(!$Exclude){Copy-Item $Directories[$i] $DestinationPath -Force -Recurse -Verbose;}
+        if(!$Exclude)
+        {
+            Copy-Item $Directories[$i] $DestinationPath -Force -Recurse;
+            [int16]$percent = ($i/$Directories.Length) * 100;
+            Write-Progress -Activity "Loading site" -Status "$($percent)% Complete:" -PercentComplete $percent;
+        }
     }
 Pop-Location;
 Set-Alias chrome "$($JSONReader.DefaultBrowserPath)";

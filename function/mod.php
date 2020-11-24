@@ -9,16 +9,15 @@
 
     function GetCorrectEnvironment()// runs through creds.xml for variables based on env
     {
-        $val = getcwd();
-        if($val == $GLOBALS["XMLReader"]->Environment->Local)
+        // $val = getcwd();
+        if($_SERVER['REMOTE_ADDR'] == $GLOBALS["XMLReader"]->Environment->Local)
         {
-            return $GLOBALS['CredConfig']->Local;
+          return $GLOBALS['CredConfig']->Local;
         }
-        elseif($val == $GLOBALS["XMLReader"]->Environment->Server)
+        else
         {
-            return $GLOBALS['CredConfig']->Server;
+          return $GLOBALS['CredConfig']->Server; // default is server
         }
-        else{echo "Something bad happened";}
     }
     
     function GetVariables()
@@ -69,19 +68,33 @@
         Close();
     }
 
+    function GetData(string $file, string $regex, string $replacestring)
+    {
+      global $Connected, $SendOverride;
+      $SendOverride = true;
+      if(!$Connected){Connect();}
+      $filepath = $file;
+      $sqlfile =  fopen($filepath, "r") or die("Unable to read file.");
+      $querystring = fread($sqlfile, filesize($filepath));
+      
+      if(Query(str_replace($regex,$replacestring,$querystring))){return $GLOBALS['Results'];}
+      else{return false;}
+    }
+
     // Queries table by guid
     function GetSiteContent(string $guid)
     {
-        global $Connected, $SendOverride;
-        $SendOverride = true;
-        if(!$Connected){Connect();}
-        $filepath = "sql/GetSiteContent.sql";
-        $sqlfile =  fopen($filepath, "r") or die("Unable to read file.");
-        $querystring = fread($sqlfile, filesize($filepath));
-        
-        if(Query(str_replace("@guid",$guid,$querystring))){return $GLOBALS['Results'];}
-        else{return false;}
+      return GetData($_SESSION['Tab'] . "sql/GetSiteContent.sql", "@guid", $guid);
+      // return GetData("sql/GetSiteContent.sql", "@guid", $guid);
     }
+
+    // Queries table by guid
+    function GetConstructor(string $ExternaID)
+    {
+      return GetData($_SESSION['Tab'] . "sql/GetSiteConstructor.sql", "@externalid", $ExternaID);
+      // return GetData("sql/GetSiteConstructor.sql", "@externalid", $ExternaID);
+    }
+
 
     // loads submenu for navigation through site
     function GetNav($section)
@@ -99,10 +112,19 @@
       echo "<div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">";
       // Load sub items for nav
       echo "<ul class=\"navbar-nav ml-auto\">";
-      for($i = 0; $i < 5; $i++)
+      foreach($section->NavItems->NavItem as $nav)
       {
         echo "<li class=\"nav-item\">";
-        echo "<a class=\"nav-link tm-nav-link\" href=\"#" . $section->NavItems->NavItem[$i]['ID'] . "\">" . $section->NavItems->NavItem[$i]['Name'] . "</a>";
+        echo "<a class=\"nav-link tm-nav-link\"";
+        switch($nav['Type'])
+        {
+          case "Hash":
+            echo "href=\"#" . $nav['Ref'] . "\">" . $nav['Name'] . "</a>";
+            break;
+          case "Uri":
+            echo "href=\"" . $nav['Ref'] . "\">" . $nav['Name'] . "</a>"; // this doesn't link to another url 
+            break;
+        }
         echo "</li>";
       }
       echo "</ul>";
@@ -112,15 +134,19 @@
     }
 
     // Hero section contains nav, image and short description
-    function GetHero($section)
+    function GetHero($Constructor)
     {
       $infiniteObject = null;
 
-      $infiniteObject = GetSiteContent($section->Guid)->fetch_assoc();  
-      GetNav($section);
+      $infiniteObject = GetSiteContent($Constructor["ContentGUID"])->fetch_assoc();  
+
+      foreach($GLOBALS['XMLReader']->Pages->Page as $page)
+      {
+        if($Constructor['SubItems'] == $page['Guid']){GetNav($page);}
+      }
 
       echo "<div class=\"text-center tm-hero-text-container\">";
-      echo "<img src=\"" . $infiniteObject["Image"] . "\" alt=\"Avatar\" class=\"img-avatar\">";
+      if($infiniteObject["Image"] != ""){echo "<img src=\"" . $_SESSION['Tab'] . $infiniteObject["Image"] . "\" alt=\"Avatar\" class=\"img-avatar\">";}
       echo "<div class=\"tm-hero-text-container-inner\">";
       echo "<h2 class=\"tm-hero-title\">" . $infiniteObject['Subject'] . "</h2>";
       echo "<p class=\"tm-hero-subtitle\">";
@@ -131,11 +157,11 @@
     }
 
     // Grid is description section 
-    function GetGrid($section)
+    function GetGrid($Constructor)
     {
       $containerObject = null;
 
-      $containerObject = GetSiteContent($section->Guid)->fetch_assoc();  
+      $containerObject = GetSiteContent($Constructor["ContentGUID"])->fetch_assoc();  
       
       echo "<div class=\"container\">";
       echo "<div class=\"row tm-content-box\">";
@@ -152,11 +178,11 @@
     }
 
     // bubbles contain links and descriptions
-    function GetBubbles($section)
+    function GetBubbles($Constructor)
     {
       $containerObject = null;
 
-      $containerObject = GetSiteContent($section->Guid)->fetch_assoc();  
+      $containerObject = GetSiteContent($Constructor["ContentGUID"])->fetch_assoc();  
 
       // Load content
       echo "<div class=\"container tm-testimonials-content\">";
@@ -171,14 +197,13 @@
       echo "<div class=\"tm-testimonials-carousel\">";
 
       // Load Carousel
-
-      $results = GetSiteContent($section->Items);
+      $results = GetSiteContent($Constructor["SubItems"]);
       while($item = $results->fetch_assoc())
       {
         echo "<figure class=\"tm-testimonial-item\"  "; 
         if(!empty($item["Hyperlink"])) { echo "onclick=\"window.open('" . $item["Hyperlink"] . "','mywindow');\">";} // if there is a hyperlink connected to this data
         else {echo ">";}
-        echo "<img src=\"" . $item["Image"] . "\" alt=\"Image\" class=\"img-fluid mx-auto\">";
+        echo "<img src=\"" . $_SESSION['Tab'] . $item["Image"] . "\" alt=\"Image\" class=\"img-fluid mx-auto\">";
         echo "<blockquote>" . $item["Value"] . "</blockquote>";
         echo "<figcaption>" . $item["Subject"] . "</figcaption>";
         echo "</figure>";
@@ -188,13 +213,15 @@
       echo "</div>";
       echo "</div>";
       echo "</div>";
+      
+      if($Constructor["HasFooter"] == 1) {GetFooter();} // load footer
     }
 
-    function GetGallery($section)
+    function GetGallery($Constructor)
     {
       $galleryObject = null;
 
-      $galleryObject = GetSiteContent($section->Guid)->fetch_assoc(); 
+      $galleryObject = GetSiteContent($Constructor["ContentGUID"])->fetch_assoc(); 
       
       echo "<div class=\"container tm-container-gallery\">";
       echo "<div class=\"row\">";
@@ -211,12 +238,12 @@
       echo "<div class=\"mx-auto tm-gallery-container\">";
       echo "<div class=\"grid tm-gallery\">";
 
-      $results = GetSiteContent($section->Items);
+      $results = GetSiteContent($Constructor["SubItems"]);
       while($item = $results->fetch_assoc())
       {
-        echo "<a href=\"" . $item["Image"] . "\">";
+        echo "<a href=\"" . $_SESSION['Tab'] . $item["Image"] . "\">";
         echo "<figure class=\"effect-honey tm-gallery-item\">";
-        echo "<img src=\"" . $item["Image"] . "\" alt=\"Image 1\" class=\"img-fluid\">";
+        echo "<img src=\"" . $_SESSION['Tab'] . $item["Image"] . "\" alt=\"Image 1\" class=\"img-fluid\">";
         echo "<figcaption>";
         echo "<h2><i>" . $item["Subject"] . " <span><br/>" . $item["Value"] . "</span></i></h2>";
         echo "</figcaption>";
@@ -231,11 +258,11 @@
     }
 
     // includes footer
-    function GetInfo($section)
+    function GetInfo($Constructor)
     {
       $contactObject = null;
 
-      $contactObject = GetSiteContent($section->Guid)->fetch_assoc(); 
+      $contactObject = GetSiteContent($Constructor["ContentGUID"])->fetch_assoc(); 
 
       echo "<div class=\"container tm-container-contact\">";
       echo "<div class=\"row\">";
@@ -245,7 +272,7 @@
       echo $contactObject['Value'];
       echo "<br>";
 
-      $results = GetSiteContent($section->Items);
+      $results = GetSiteContent($Constructor["SubItems"]);
       while($item = $results->fetch_assoc())
       {
         echo "<div class=\"contact-item\">";
@@ -260,7 +287,7 @@
       echo "</div>";
       echo "</div>";
       
-      GetFooter(); // load footer
+      if($Constructor["HasFooter"] == 1) {GetFooter();} // load footer
     }
 
     function GetFooter()
@@ -269,7 +296,7 @@
       echo "<footer class=\"text-center small tm-footer\">";
       echo "<div class=\"footer-container\"";
       echo "<p class=\"mb-0\">© " .  str_replace("@year", date("Y"), $GLOBALS['XMLReader']->Footer->Copyright) . "</p>";
-      echo "<p><a href=\"https://github.com/BrandonMFong/Site\">Open Source</a></p>";
+      echo "<p><a href=\"https://github.com/BrandonMFong/Site\">Follow this site's source code</a></p>";
       echo "</div>";
       echo "</footer>";
     }
@@ -290,7 +317,7 @@
       // Load CSS
       foreach($GLOBALS['XMLReader']->Header->StyleSheets as $ref)
       {
-          echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $ref . "\" media=\"screen\">";
+        echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $_SESSION['Tab'] . $ref . "\" media=\"screen\">";
       }
     }
 
@@ -299,7 +326,8 @@
       // Load Javascripts
       foreach($GLOBALS['XMLReader']->Scripts->Script as $script)
       {
-          echo "<script src=\"" . $script . "\"></script>";
+        // echo "<script type =\"text/javascript\" src=\"" . $_SESSION['Tab'] . $script . "\"></script>";
+        echo "<script src=\"" . $_SESSION['Tab'] . $script . "\"></script>";
       }
     }
 
@@ -323,5 +351,15 @@
           GetInfo($SectionObject);
           break;  
       }
+    }
+
+    function initPage(string $guid)
+    {
+      $results = "";
+      foreach($GLOBALS['XMLReader']->Pages->Page as $page)
+      {
+        if($guid == $page['Guid']){$results = GetConstructor($page->ConstructorExternalID);}
+      }
+      return $results;
     }
 ?>
