@@ -33,4 +33,5 @@ Push-Location $JSONReader.Source;
     }
 Pop-Location;
 Set-Alias chrome "$($JSONReader.DefaultBrowserPath)";
-chrome "$($JSONReader.URL)/$($JSONReader.SiteName)";
+chrome "$($JSONReader.URL)/$($JSONReader.SiteName)"; # Open site
+chrome "$($JSONReader.URL)/phpmyadmin/"; # Open phpmyadmin
