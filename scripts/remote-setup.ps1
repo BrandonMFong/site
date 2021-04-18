@@ -9,7 +9,7 @@ Add-Content $PSScriptroot\..\logs\deploy.log -Value "[$($Date)] Computer=$($env:
 & "C:\Program Files (x86)\WinSCP\WinSCP.com" `
   /log="$($logname)" /ini=nul `
   /command `
-    "open sftp://brandonmfong@192.168.1.26/ -hostkey=`"`"ssh-ed25519 255 IU7Ke959JWplUHx+ZeHOBOQOjzHhHboZg2kHdLvyGFs=`"`" -privatekey=`"`"B:\.ssh\Kojami.rpi_key.ppk`"`" -rawsettings Cipher=`"`"aes,chacha20,3des,WARN,des,blowfish,arcfour`"`"" `
+    "open sftp://brandonmfong@10.0.0.60/ -hostkey=`"`"ssh-ed25519 255 IU7Ke959JWplUHx+ZeHOBOQOjzHhHboZg2kHdLvyGFs=`"`" -privatekey=`"`"B:\.ssh\Kojami.rpi_key.ppk`"`" -rawsettings Cipher=`"`"aes,chacha20,3des,WARN,des,blowfish,arcfour`"`"" `
     "lcd B:\SOURCE\Repo\Site" `
     "cd /var/www/brandonmfong.com" `
     "rm *" `
