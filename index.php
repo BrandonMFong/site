@@ -5,9 +5,9 @@
     
     // Load config files
     $_SESSION['XMLReader-String'] = file_get_contents("config/Site.xml") or die("Failed to load");
-    $_SESSION['CredConfig-String'] = file_get_contents("config/creds.xml") or die("Failed to load");
+    #$_SESSION['CredConfig-String'] = file_get_contents("config/creds.xml") or die("Failed to load");
     $GLOBALS['XMLReader'] = simplexml_load_string($_SESSION['XMLReader-String']);
-    $GLOBALS['CredConfig'] = simplexml_load_string($_SESSION['CredConfig-String']);
+    #$GLOBALS['CredConfig'] = simplexml_load_string($_SESSION['CredConfig-String']);
 
     if($GLOBALS['XMLReader']->IsUnderMaintenance == 'True') // if I am working on the site and it isn't ready to be public
     {
