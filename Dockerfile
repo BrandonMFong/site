@@ -24,7 +24,7 @@ COPY external/http/bin/release/http /app/
 RUN chmod +x /app/http
 
 # Expose the port your HTTP server listens on (replace 8080 if different)
-EXPOSE 8080
+EXPOSE 8081
 
 # Command to run your HTTP server
-CMD ["/app/http", "-root", "/app/root"]
+CMD ["/app/http", "-root", "/app/root", "-port", "8081"]
