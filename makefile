@@ -20,5 +20,5 @@ stop:
 
 clean:
 	-docker container rm "$(DOCKER_CONTAINER_NAME)"
-	docker image rm $$(docker image ls -q '$(DOCKER_IMAGE_NAME)')
+	-docker image rm $$(docker image ls -q '$(DOCKER_IMAGE_NAME)')
 

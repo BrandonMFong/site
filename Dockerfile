@@ -6,7 +6,10 @@ RUN apt-get update
 # Install any necessary runtime dependencies for your C++ application
 # You might need libraries like libstdc++, or others depending on your code.
 # This is a common one, but adjust as needed.
-RUN apt-get install -y --no-install-recommends libstdc++6 && rm -rf /var/lib/apt/lists/*
+RUN apt-get install -y --no-install-recommends libstdc++6
+
+# some tools I want
+RUN apt-get install -y vim htop
 
 # Create a directory for your application inside the container
 WORKDIR /app
