@@ -8,8 +8,9 @@ HTTP_PORT_INTERNAL = 8081
 HTTP_PORT_EXTERNAL = 8080
 
 build:
-	cd external/http/external/libs && git submodule init && git submodule update
-	cd external/http && git submodule init && git submodule update && make clean dependencies build
+	git submodule init && git submodule update
+	cd external/http && git submodule init && git submodule update
+	cd external/http && make clean dependencies build
 	docker build --no-cache -t "$(DOCKER_IMAGE_NAME)" .
 
 container: 
