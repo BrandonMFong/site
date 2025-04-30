@@ -1,0 +1,3 @@
+[submodule "external/http"]
+	path = external/http
+	url = git@github.com:BrandonMFong/http.git
