@@ -1,6 +1,6 @@
 # site
 
-This repository contains the source code for my personal portfolio website. It includes all the necessary HTML, source code, and Docker configuration to easily host the website using a container. Additionally, it features a custom HTTP server program written in C++ to serve the website content.
+This repository contains the source code for my personal portfolio website. It includes all the necessary HTML, source code, and Docker configuration to easily host the website using a container. Additionally, it features a custom HTTP server program I wrote in C++ to serve the website content.
 
 ## Key Features
 
